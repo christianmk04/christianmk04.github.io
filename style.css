@@ -24,14 +24,15 @@ h1{
     -webkit-text-fill-color: transparent;
 }
 
-#carousel-img, #carousel-img-portrait{
+#carousel-img{
     filter: brightness(50%);
+    width:auto; 
+    margin:auto;
 }
 
 #carousel-img-portrait{
     max-height: 720px; 
-    width:auto; 
-    margin:auto;
+    
 }
 
 .carousel-item{
