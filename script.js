@@ -252,7 +252,7 @@ function tab3(body) {
                 <p>I am a huge fan of playing the beautiful game known as Football! I've been playing since I was 6 and the ball has never left my feet ever since. A shame I decided to do computing instead of going pro ...</p>
               </div>
               <div class="col-4" >
-                <img src="accor1.jpg" alt="" class="accor-img">
+                <img src="Images/accor1.jpg" alt="" class="accor-img">
               </div>
             </div>
             
@@ -272,7 +272,7 @@ function tab3(body) {
                 <p>Funnily enough, I only learnt to ride a bike at 16! But that decision has allowed me to explore so many different places and to enjoy so many more fruitful experiences with my friends. This was a picture of when I went overnight cycling from East Coast Park to Keppel Bay before school started!</p>
               </div>
               <div class="col-4 order-1">
-                <img src="accor3.jpg" alt="" class="accor-img">
+                <img src="Images/accor3.jpg" alt="" class="accor-img">
               </div>
             </div>
             
@@ -292,7 +292,7 @@ function tab3(body) {
                 <p>Singapore is small, but some of its sights are just so wonderful to see. I recently only took an interest in photography, but it has made me appreciate the beauty in the things around me. Try to guess where this is!</p>
               </div>
               <div class="col-4">
-                <img src="accor2.jpg" alt="" class="accor-img">
+                <img src="Images/accor2.jpg" alt="" class="accor-img">
               </div>
             </div>
             
@@ -313,7 +313,7 @@ function tab3(body) {
                 <p>My friends are what keeps me going! I love to spend time with them, this semester is kinda making it hard to spend time with them though <span>&#129300;</span></p>
               </div>
               <div class="col-4 order-1">
-                <img src="accor4.jpg" alt="" class="accor-img">
+                <img src="Images/accor4.jpg" alt="" class="accor-img">
               </div>
             </div>
             
@@ -339,42 +339,42 @@ function tab4(body) {
       </div>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="travel6.jpg" class="d-block w-100" alt="...">
+          <img src="Images/travel6.jpg" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
             <h5>The sunrise at Burobudur</h5>
             <p>5am sunrise over the clouds</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="travel5.jpg" class="d-block w-100" alt="...">
+          <img src="Images/travel5.jpg" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
             <h5>Burobudur Temples</h5>
             <p>A UNESCO world heritage site</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="travel4.jpg" class="d-block w-100" alt="...">
+          <img src="Images/travel4.jpg" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
             <h5>Burobudur Temples</h5>
             <p>The largest Buddhist temple in the world!</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="travel3.jpg" class="d-block w-100" alt="...">
+          <img src="Images/travel3.jpg" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
             <h5>Javan Street Art</h5>
             <p>Java is known for their creative street art</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="travel2.jpg" class="d-block w-100" alt="...">
+          <img src="Images/travel2.jpg" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
             <h5>Jogja Beaches</h5>
             <p>Look at the clean water and beach!</p>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="travel1.jpg" class="d-block w-100" alt="...">
+          <img src="Images/travel1.jpg" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
             <h5>A dear at Taman Safari Park</h5>
             <p>A safari reserve that has many many animals</p>
