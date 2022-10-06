@@ -1,0 +1,72 @@
+body{
+    font-family: Ink Free;
+}
+
+#header-img{
+    height: 20px;
+    width: 170px;
+}
+
+#carousel-container{
+    position: relative;
+}
+
+#text-block{
+    position: absolute;
+    top: 5%;
+    left: 10%;
+}
+
+h1{
+    font-size: 72px;
+    background: -webkit-linear-gradient(#5de6f0,#daa2f5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#carousel-img, #carousel-img-portrait{
+    filter: brightness(50%);
+}
+
+#carousel-img-portrait{
+    max-height: 720px; 
+    width:auto; 
+    margin:auto;
+}
+
+.carousel-item{
+    background-color: rgb(27, 26, 26);
+}
+
+.carousel .carousel-indicators button{
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+}
+
+.list-group-item a{
+    text-decoration: none;
+}
+
+#li1 a{
+    color: palevioletred;
+}
+
+#li2 a{
+    color: palegreen;
+}
+
+#li3 a{
+    color: paleturquoise;
+}
+
+#li4 a{
+    color: palegoldenrod;
+}
+
+.accor-img{
+    width: 70%; 
+    display: block; 
+    margin: auto; 
+    border-radius: 10px;
+}
