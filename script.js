@@ -376,7 +376,7 @@ function tab4(body) {
         <div class="carousel-item">
           <img src="Images/travel1.jpg" class="d-block w-100" alt="...">
           <div class="carousel-caption d-none d-md-block">
-            <h5>A dear at Taman Safari Park</h5>
+            <h5>A deer at Taman Safari Park</h5>
             <p>A safari reserve that has many many animals</p>
           </div>
         </div>
