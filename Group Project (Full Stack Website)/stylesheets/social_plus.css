@@ -1,0 +1,16 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#sos_button{
+    margin-left: auto;
+    /* display: flex; */
+    border: 3px rgb(254, 112, 138) solid;
+    color: white;
+    background-color: rgb(254, 112, 138);
+    border-radius: 20px;
+}
+
+#logo{
+    width: 30%;
+}

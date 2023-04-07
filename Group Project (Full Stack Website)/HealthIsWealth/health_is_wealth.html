@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health is Wealth</title>
+
+    <!-- Icon -->
+    <link rel="icon" href="../img/logo.png" type="image/gif" sizes="50x50">
+
+    <link rel="stylesheet" href="../stylesheets/health_is_wealth.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet" />
+
+
+    
+
+    <!-- Vue.js 3 CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- lottie -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+
+ <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+       integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+       crossorigin="anonymous"></script>
+
+
+</head>
+<body onload="typeWriter()">
+
+
+<!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+
+      <a class="navbar-brand" href="/HomeLandingAbout/homepage.html">
+        <img src="/img/logo.png" style="height: 140px;" alt="DomesticAID Logo" />
+      </a>
+
+      <button class="navbar-toggler" style="color:black;" type="button" data-bs-toggle="collapse"
+        data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+          <li class="nav-item dropdown mx-3">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-mdb-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user-friends"></i>
+              Social+
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+              <li>
+                <a class="dropdown-item" href="/Social/Forum/forum.html">Forum</a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="/Social/Activities/activities_landing.html">Activities</a>
+              </li>
+
+            </ul>
+          </li>
+
+          <!-- Icon dropdown -->
+
+          <li class="nav-item dropdown mx-3">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-mdb-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-folder-open"></i>
+              Guides
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+              <li>
+                <a class="dropdown-item" href="/Guides/guide_care.html">Caregiving</a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="/Guides/guide_navigation.html">Navigating
+                  Singapore</a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="/Guides/guide_rights.html">Know your rights!</a>
+              </li>
+
+            </ul>
+
+
+          </li>
+
+          <li class="nav-item dropdown mx-3">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-mdb-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-seedling"></i>
+              Wellness
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+              <li>
+                <a class="dropdown-item" href="/HealthIsWealth/Mental_Health/mental_health_landing.html">Mental
+                  Health</a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="/HealthIsWealth/Physical_Health/physical_health_places.html">Physical
+                  Health</a>
+              </li>
+
+            </ul>
+
+
+          </li>
+
+          <!-- Icon dropdown -->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink"
+              role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+              <img src="/img/jx.jpg" class="rounded-circle" height="22" alt="Portrait of a Woman" loading="lazy" />
+            </a>
+
+            <!-- End -->
+
+            <ul class="dropdown-menu dropdown-menu-md-end dropdown-menu-sm-start" aria-labelledby="navbarDropdownMenu">
+              <li>
+                <a class="dropdown-item" href="/Registration&Profiling/edit_profiling.html">My
+                  profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/HomeLandingAbout/about.html">Logout</a>
+              </li>
+            </ul>
+
+            <!-- Start -->
+            <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenu">
+              <li>
+                <a class="dropdown-item" href="/Registration&Profiling/edit_profiling.html">My
+                  profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/HomeLandingAbout/about.html">Logout</a>
+              </li>
+            </ul>
+          </li>
+
+
+
+          <!-- Icon dropdown -->
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+<!-- <div class="container text-center" id="container_div">
+    <p id="header-text" style="font-size: 90px; font-weight:400;">Self-Care Is The First Step.</p>
+    <p id="header-text-subheader">Which aspect would you like to seek?</p>
+</div> -->
+
+<div class="container-fluid mt-4 text-center">
+  
+        <h1 class="display-1">Self-Care Is The First Step.</h1>
+      
+  </div>
+
+  <div class="container my-2 mx-auto text-center">
+    <div class="row">
+      <div class="col-12 col-lg-8 my-auto p-4">
+        <h2>About Wellness</h2> <br>
+        <p id="demo" style="font-size:20px"></p>
+
+      </div>
+
+      <script>
+        var i = 0;
+        var txt = "Hi there, I'm RK, your friendly relaxed jellyfish and I'm your tour guide for this page! Your health is important, and that's why we have things for you to improve your mental and physical health! Journal, breathe or relax with our mental wellness features, or find healthcare institutions near you if you need some help! Take care of yourself, it's good for you :)";
+        var speed = 40;
+        
+        function typeWriter() {
+          console.log("test");
+          if (i < txt.length) {
+            document.getElementById("demo").innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+          }
+        }
+        </script>
+
+      <div class="col-12 col-lg-4 text-center">
+          <lottie-player
+          src="https://assets10.lottiefiles.com/temp/lf20_LTtOeb.json"
+          background="transparent"
+          speed="1"
+          style="width: auto"
+          loop
+          autoplay
+          ></lottie-player>      
+      </div>
+    </div>  
+  </div>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-6 my-2">
+            <div class="card p-5 health-card" id="mental-card" style="height:100%">
+                <div class="card-body text-center">
+                  <p class="card-text">
+                    <lottie-player
+                    src="https://assets4.lottiefiles.com/packages/lf20_UepHvaXIU4.json"
+                    background="transparent"
+                    speed="1"
+                    style="height: 100%"
+                    loop
+                    autoplay
+                    ></lottie-player>
+                  </p>
+                  <h3 class="card-title mt-5 fw-bold">Mental Health</h3>
+                  <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                  <p class="card-text">Mental Health is just as important as your physical health. Check out the various items DomesticAID offers</p>
+                  <a href="Mental_Health/mental_health_landing.html" class="btn mt-5" id="mental_button">Let's Go</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 my-2">
+            <div class="card p-5 health-card" id="physical-card" style="height:100%">
+                <div class="card-body text-center">
+                    <p class="card-text">
+                      <lottie-player
+                      src="https://assets7.lottiefiles.com/packages/lf20_D1Sg5x3JNk.json"
+                      background="transparent"
+                      speed="1"
+                      style="height: 100%;"
+                      loop
+                      autoplay
+                      ></lottie-player>
+                    </p>
+                  <h3 class="card-title mt-5 fw-bold">Physical Health</h3>
+                  <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                  <p class="card-text mb-5">Your body is your temple and your carrier in your daily life. Need some help in taking care of it? Find out more here</p>
+                  <a href="Physical_Health/physical_health_places.html" class="btn mt-5" id="mental_button">Know More</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="footer">
+  <footer-template></footer-template>
+</div>
+
+
+<script src="../scripts/nav_foot.js"></script>  
+<!-- <script src="../scripts/health_wealth.js"></script> -->
+<script src="../../scripts/sos.js"></script>
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>

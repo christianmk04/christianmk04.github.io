@@ -1,0 +1,39 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.sub-header{
+    font-weight: 200px; 
+    margin: 20px 0px;
+}
+
+#sub-header1, #sub-header3{
+    text-align: end;
+}
+
+#sos_button{
+    margin-left: auto;
+    /* display: flex; */
+    border: 3px rgb(254, 112, 138) solid;
+    color: white;
+    background-color: rgb(254, 112, 138);
+    border-radius: 20px;
+}
+
+/* .nav-link{
+    color: gray;
+} */
+
+#logo{
+    width: 30%;
+}
+
+#container_div{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#header-text{
+    font-size: 50px;
+    font-weight: 20;
+}

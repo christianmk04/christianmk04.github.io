@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DomesticAID - Here for you</title>
+
+    <!-- Icon -->
+    <link rel="icon" href="../img/logo.png" type="image/gif" sizes="50x50">
+
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <!-- MDN CDN -->
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet" />
+
+    <!-- LottieFiles -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+    <!-- Vue.js 3 CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+
+    <style>
+        * {
+            font-family: Poppins;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- Navbar -->
+
+    <nav class="navbar navbar-expand-lg fixed-top bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/HomeLandingAbout/about.html">
+                <img src="../img/logo.png" height="140px" alt="DomesticAID Logo" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item mx-3">
+                        <a class="nav-link active" aria-current="page" href="#">About DomesticAID</a>
+                    </li>
+
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="#">Our Team</a>
+                    </li>
+
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="#">Donate</a>
+                    </li>
+
+                    <li class="nav-item mx-3">
+                        <a class="nav-link" href="#">Join Us</a>
+                    </li>
+
+                    <li class="nav-item mx-3">
+                        <a href="../Registration&Profiling/login.html" class="btn btn-outline-dark btn-rounded"
+                            role="button">
+                            Register/ Login
+                        </a>
+                    </li>
+
+
+                    <!-- Icon dropdown -->
+                    <li class="nav-item dropdown mx-3">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-mdb-toggle="dropdown" aria-expanded="false">
+                            <i class="flag-singapore flag m-0"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-md-end dropdown-menu-start" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="#"><i class="flag-singapore flag"></i>English
+                                    <i class="fa fa-check text-success ms-2"></i></a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider" />
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item mx-3" href="#"><i class="flag-philippines flag"></i>Tagalog</a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item mx-3" href="#"><i class="flag-indonesia flag"></i>Bahasa
+                                    Indonesia</a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item mx-3" href="#"><i class="flag-myanmar flag"></i>Burmese</a>
+                            </li>
+
+                        </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <!-- Main content -->
+
+    <div class="container-fluid px-4"
+        style="padding-top:200px; background-image: linear-gradient(to right, #e7f6fd , #faebf8); padding-bottom: 80px;">
+
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-sm-6">
+                <div class="row">
+                    <h1 class="display-3 mb-4 mt-5">
+                        Ask, Connect, Learn
+                    </h1>
+
+                    <h2 class="display-4">
+                        All in one app.
+                    </h2>
+
+                </div>
+
+
+                <blockquote class="blockquote fs-5 mt-5">
+                    <p>
+                        Feeling lost, unsure of where to seek help or just want to broaden your social circle?
+                        DomesticAID is here for you.
+                    </p>
+                </blockquote>
+
+                <!-- <div class="fw-bold mt-5">
+                    Join the 10,000 foreign domestic worker community in Singapore today!🎉
+                </div> -->
+
+                <div>
+                    <a href="../Registration&Profiling/register.html"
+                        class="btn btn-secondary btn-rounded btn-lg mt-5 create" role="button"
+                        data-mdb-ripple-color="dark">
+                        Create an account
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="col-sm-4">
+                <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_sjtjaukf.json"
+                    background="transparent" speed="1" class="m-auto" loop autoplay>
+                </lottie-player>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="container-fluid px-4" style="padding-top:50px; padding-bottom: 80px; text-align: center;">
+
+        <h5 class="display-5 mb-4">Why <span style="text-decoration:underline; font-weight: bold;">DomesticAID</span>?
+        </h5>
+
+        <!-- 1 - why domesticaid -->
+        <div class="row gx-5">
+
+            <div class="col-sm">
+                <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_f2jo61ci.json"
+                    background="transparent" speed="1" class="m-auto" loop autoplay style="height:400px; width:600px;">
+                </lottie-player>
+            </div>
+
+            <div>
+                <h1 class="fw-bold mt-2 text-primary">1</h1>
+                <!-- <h3 style="border-radius:50%; border:1px solid black; height:60px; width:60px;">1</h3> -->
+                <h3 style="font-weight: 900;"> Make new friends!</h3>
+                <p class="fs-5 mt-4">Connect with other fellow domestic workers in Singapore.</p>
+            </div>
+        </div>
+
+        <!-- 2 - why domesticaid -->
+        <div class="row gx-5" style="background-color:rgb(255, 240, 244)">
+
+            <div class="col-sm">
+                <lottie-player src="https://assets5.lottiefiles.com/temp/lf20_BjrC73.json" background="transparent"
+                    speed="1" class="m-auto" loop autoplay style="height:400px; width:600px;">
+                </lottie-player>
+            </div>
+
+            <div>
+                <h1 class="fw-bold mt-2 text-danger">2</h1>
+                <!-- <h3 style="border-radius:50%; border:1px solid black; height:60px; width:60px;">1</h3> -->
+                <h3 style="font-weight: 900;">Seek help when in danger</h3>
+                <p class="fs-5 mt-4"> Access immediate SOS services should you be in any danger.</p>
+            </div>
+        </div>
+
+        <!-- 1 - why domesticaid -->
+        <div class="row gx-5">
+            <div class="col-sm">
+                <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_npdm92px.json"
+                    background="transparent" speed="1" class="m-auto" loop autoplay style="height:400px; width:600px;">
+                </lottie-player>
+            </div>
+        </div>
+
+        <div>
+            <h1 class="fw-bold mt-2 text-success">3</h1>
+            <!-- <h3 style="border-radius:50%; border:1px solid black; height:60px; width:60px;">1</h3> -->
+            <h3 style="font-weight: 900;">Get Information and Emotional support</h3>
+            <p class="fs-5 mt-4"> Learn about your basic rights and privileges while working in Singapore and gain
+                access to
+                our mental rejuvenation exercises!</p>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+    <div id="footer">
+        <footer-template></footer-template>
+    </div>
+    
+
+    <!-- Boostrap CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
+
+    <script src="/stylesheets/about.css"></script>
+    <script src="../scripts/nav_foot.js"></script> 
+</body>
+
+</html>

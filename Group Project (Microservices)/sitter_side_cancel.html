@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Jobs</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <style>
+      #page_body {
+          /* font-family: 'Lato', sans-serif; */
+          background-image: url('https://i.ibb.co/kmwcSRS/pets.jpg');
+          background-size: cover;
+          background-repeat: no-repeat;
+          color: #191a1e;
+      }
+  </style>
+
+</head>
+<body id="page_body">    
+  
+    <div class="container bg-light my-5">
+        <h1 class="display-1 text-center fw-bold">My Job Sessions</h1>
+        <p class="text-center fs-3">View and manage upcoming jobs that you have currently accepted, and view all previous sessions that were completed or cancelled.</p>
+
+        <div id="reload_div">
+          <div id="filter">
+            <button class="btn btn-info" onclick="viewJobs('In-Progress')" id="1">Upcoming Jobs</button>
+            <button class="btn btn-success" onclick="viewJobs('Completed')" id="2">Completed Jobs</button>
+            <button class="btn btn-danger" onclick="viewJobs('Cancelled')" id="3">Cancelled Jobs</button>
+          </div>
+          
+          <div class="row my-3" id="job_list">
+            
+  
+          </div>
+      
+          <a class="mx-auto btn btn-secondary my-5" href="create_job.html">Go Back</a>
+          <!-- Is not meant to work, supposed to simulate a back button to a theoretical page where the sitter can apply for jobs (not in our scenarios) -->
+        
+
+        </div>
+        
+        
+    </div>
+
+    <script src="JSfiles/incident.js"></script>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+    <!-- MDB -->
+    <!-- <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.js"
+    ></script> -->
+</body>
+</html>
+
+

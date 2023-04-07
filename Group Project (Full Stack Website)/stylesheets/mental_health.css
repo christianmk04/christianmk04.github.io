@@ -1,0 +1,82 @@
+*{
+    font-family: Poppins
+}
+
+#sos_button{
+    margin-left: auto;
+    /* display: flex; */
+    border: 3px rgb(254, 112, 138) solid;
+    color: white;
+    background-color: rgb(254, 112, 138);
+    border-radius: 20px;
+}
+
+#logo{
+    width: 30%;
+}
+
+
+#header-text{
+    font-size: 60px;
+    font-weight: 30;
+}
+
+#header-text-subheader{
+    font-size: 20px;
+    font-weight: 20;
+}
+
+
+.sub-header{
+    font-weight: 200px; 
+    margin: 20px 0px;
+}
+
+
+#container_div{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
+#mental-card-2{
+    background-image: linear-gradient(to right, #e1f4f7 , #f6ebf7);
+}
+
+#mental-card-1{
+    background-image: linear-gradient(to right, #fff6f0 , #faf8e3);
+}
+
+#mental-card-3{
+    background-image: linear-gradient(to right, #e1f7df , #ecebfa);
+}
+
+#mental-card-4{
+    background-image: linear-gradient(to right, #ffe4db , #e4ffef);
+}
+
+.mental-card:hover{
+    box-shadow: 0 18px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#mental_button{
+    font-size: 13px;
+    border-radius: 20px;
+    border: 2px solid black;
+    color: black;
+    width: 30%;
+    margin: auto;
+    display: block;
+    background: transparent;
+    transition: .2s ease-in-out 0s;
+}
+
+
+#mental_button:hover{
+    cursor: pointer;
+    transform: scale(1.25);
+    background: black;
+    color: white;
+}
+
+

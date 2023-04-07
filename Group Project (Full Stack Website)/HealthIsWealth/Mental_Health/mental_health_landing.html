@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health</title>
+
+    <!-- Icon -->
+    <link rel="icon" href="../../img/logo.png" type="image/gif" sizes="50x50">
+
+    <link rel="stylesheet" href="../../stylesheets/mental_health.css">
+    
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet" />
+
+
+    <!-- lottie -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+    <!-- Vue.js 3 CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+
+
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+
+      <a class="navbar-brand" href="/HomeLandingAbout/homepage.html">
+          <img src="/img/logo.png" style="height: 140px;" alt="DomesticAID Logo" />
+      </a>
+
+      <button class="navbar-toggler" style="color:black;" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+          aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" ></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+              <li class="nav-item dropdown mx-3">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                      data-mdb-toggle="dropdown" aria-expanded="false">
+                      <i class="fas fa-user-friends"></i>
+                      Social+
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                      <li>
+                          <a class="dropdown-item" href="/Social/Forum/forum.html">Forum</a>
+                      </li>
+
+                      <li>
+                          <a class="dropdown-item"
+                              href="/Social/Activities/activities_landing.html">Activities</a>
+                      </li>
+
+                  </ul>
+              </li>
+
+              <!-- Icon dropdown -->
+
+              <li class="nav-item dropdown mx-3">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                      data-mdb-toggle="dropdown" aria-expanded="false">
+                      <i class="fas fa-folder-open"></i>
+                      Guides
+                  </a>
+
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                      <li>
+                          <a class="dropdown-item" href="/Guides/guide_care.html">Caregiving</a>
+                      </li>
+
+                      <li>
+                          <a class="dropdown-item" href="/Guides/guide_navigation.html">Navigating
+                              Singapore</a>
+                      </li>
+
+                      <li>
+                          <a class="dropdown-item" href="/Guides/guide_rights.html">Know your rights!</a>
+                      </li>
+
+                  </ul>
+
+
+              </li>
+
+              <li class="nav-item dropdown mx-3">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                      data-mdb-toggle="dropdown" aria-expanded="false">
+                      <i class="fas fa-seedling"></i>
+                      Wellness
+                  </a>
+
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                      <li>
+                          <a class="dropdown-item" href="/HealthIsWealth/Mental_Health/mental_health_landing.html">Mental Health</a>
+                      </li>
+
+                      <li>
+                          <a class="dropdown-item" href="/HealthIsWealth/Physical_Health/physical_health_places.html">Physical Health</a>
+                      </li>
+
+                  </ul>
+
+
+              </li>
+
+              <!-- Icon dropdown -->
+
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
+                      id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                      <img src="/img/jx.jpg" class="rounded-circle" height="22" alt="Portrait of a Woman"
+                          loading="lazy" />
+                  </a>
+
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenu">
+                      <li>
+                          <a class="dropdown-item" href="/Registration&Profiling/edit_profiling.html">My
+                              profile</a>
+                      </li>
+                      <li>
+                          <a class="dropdown-item" href="/HomeLandingAbout/about.html">Logout</a>
+                      </li>
+                  </ul>
+              </li>
+
+              <!-- Icon dropdown -->
+
+          </ul>
+      </div>
+  </div>
+</nav>
+
+
+<div class="container" id="container_div">
+    <h1 id="header-text">Let's Take Charge Of Our Mental Health.</h1>
+    <p id="header-text-subheader">Select one of the options below:</p>
+</div>
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-6 my-2">
+            <div class="card p-5 mental-card" id="mental-card-1" style="height:100%">
+                <div class="card-body text-center">
+                  <p class="card-text text-center">
+                    <lottie-player
+                    src="https://assets6.lottiefiles.com/packages/lf20_xzIOCI.json"
+                    background="transparent"
+                    speed="1"
+                    style="height: 40vh;"
+                    loop
+                    autoplay
+                    ></lottie-player>
+                  </p>
+                  <h3 class="card-title mt-3 fw-bold">Let's Breathe</h3>
+                  <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                  <p class="card-text">Breathing exercises to help calm yourself down and have a clearer mind</p>
+                  <a href="breathing.html" class="btn mt-5" id="mental_button">Let's Go</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 my-2">
+            <div class="card p-5 mental-card" id="mental-card-2" style="height:100%">
+                <div class="card-body text-center">
+                    <p class="card-text">
+                      <lottie-player
+                      src="https://assets2.lottiefiles.com/packages/lf20_bnxoocv2.json"
+                      speed="1"
+                      style="height: 40vh;"
+                      loop
+                      autoplay
+                      ></lottie-player>
+                    </p>
+                  <h3 class="card-title mt-3 fw-bold">Journal Away...</h3>
+                  <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                  <p class="card-text mb-5">Organise your thoughts and be more in tune with yourself.See how you've grown</p>
+                  <a href="journalling.html" class="btn mt-5" id="mental_button">Start Writing</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6 my-2">
+
+          <div class="card p-5 mental-card" id="mental-card-3" style="height:100%">
+              <div class="card-body text-center">
+                  <p class="card-text">
+                    <lottie-player
+                    src="https://assets4.lottiefiles.com/packages/lf20_whqxjuqz.json"
+                    background="transparent"
+                    speed="1"
+                    style="height: 40vh;"
+                    loop
+                    autoplay
+                    ></lottie-player>
+                  </p>
+                <h3 class="card-title mt-3 fw-bold">Relax and Feel Better</h3>
+                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                <p class="card-tex mb-5">Play DomesticAID's Mental Wellness Bingo Game! There are many things for you to do to feel better</p>
+                <a href="mental_guides.html" class="btn mt-5" id="mental_button">Play Now</a>
+              </div>
+          </div>
+
+        </div>
+
+        <div class="col-lg-6 my-2">
+
+          <div class="card p-5 mental-card" id="mental-card-4" style="height:100%">
+              <div class="card-body text-center">
+                  <p class="card-text">
+                    <lottie-player
+                    src="https://assets7.lottiefiles.com/packages/lf20_qiqxn1vp.json"
+                    background="transparent"
+                    speed="1"
+                    style="height: 40vh;"
+                    loop
+                    autoplay
+                    ></lottie-player>
+                  </p>
+                <h3 class="card-title mt-3 fw-bold">Seek Professional Help</h3>
+                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                <p class="card-text mb-5">Sometimes, we just can't do it alone. Find a trusted professional near you.</p>
+                <a href="../../HealthIsWealth/Mental_Health/mental_health_places.html" class="btn mt-5" id="mental_button">Find Help</a>
+              </div>
+          </div>
+
+        </div>
+
+
+
+    </div>
+
+</div>
+
+
+
+  <div id="footer">
+    <footer-template></footer-template>
+  </div>
+  <script src="../../scripts/nav_foot.js"></script>  
+  <!-- <script src="../../scripts/mental_health.js"></script> -->
+  <script src="../../scripts/sos.js"></script>
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html>

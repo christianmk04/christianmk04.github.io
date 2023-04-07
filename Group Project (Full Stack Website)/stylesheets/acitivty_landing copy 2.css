@@ -1,0 +1,127 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* margin:auto; */
+}
+
+.container{
+  margin: auto;
+}
+
+#sos_button{
+  margin-left: auto;
+  /* display: flex; */
+  border: 3px rgb(254, 112, 138) solid;
+  color: white;
+  background-color: rgb(254, 112, 138);
+  border-radius: 20px;
+}
+
+#logo{
+  width: 30%;
+}
+
+
+#desc_card {
+    background-color: #f4ebeb;
+    border-color: #edebc1b3;
+    max-height: 100%;
+    max-width: 100%;
+}
+
+.container img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    /* remove extra space below image */
+    margin: auto;
+}
+
+#header-text{
+  font-size: 30px;
+  font-weight: 20;
+}
+
+.card-title{
+  text-align: center;
+}
+
+#cat-card-2{
+  background-image: linear-gradient(to right, #e1f4f7 , #f6ebf7);
+}
+
+#cat-card-1{
+  background-image: linear-gradient(to right, #fff6f0 , #faf8e3);
+}
+
+#cat-card-3{
+  background-image: linear-gradient(to right, #e1f7df , #ecebfa);
+}
+
+.flip-card {
+    /* background-color: transparent; */
+    width: 300px;
+    height: 400px;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+    justify-content:center;
+    text-align:center;
+    vertical-align:center;
+    margin:auto
+}
+  
+  /* This container is needed to position the front and back side */
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Position the front and back side */
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+  }
+  
+  /* Style the front side (fallback if image is missing) */
+  /* Style the back side */
+  .flip-card-back {
+    transform: rotateY(180deg);
+    font-size:18px;
+  }
+
+  #activityCard{
+    border:1px #F5EDFD 1px;
+  }
+
+  #add_card{
+    background-color: #e2d1f7;
+    border-color: #85A2A6;
+    padding: 20px;
+    position:fixed;
+    bottom:10px;
+    right:10px;
+    z-index: 1;
+  
+  }
+
+  #cat_name{
+    font-size:28px;
+  }
+
+  #details{
+    font-size:20px;
+  }
+
+.prog-bar-cust{
+  margin-left: 0;
+  /* margin: auto; */
+}

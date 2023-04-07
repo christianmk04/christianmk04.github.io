@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+
+  <!-- Icon -->
+  <link rel="icon" href="../img/logo.png" type="image/gif" sizes="50x50">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- MDB -->
+    <link
+  href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css"
+  rel="stylesheet"
+  />
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+    crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+    integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+    crossorigin="anonymous"></script>
+
+
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+
+  <style>
+    * {
+      font-family: Poppins;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Section: Design Block -->
+  <div style="background-image: linear-gradient(to right, #e8e7fd , #faf9eb);">
+    <div class="text-center">
+      <a href="/HomeLandingAbout/about.html">
+        <img src="/img/logo.png" style="height: 200px;" alt="DomesticAID Logo" />
+      </a>
+    </div>
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col"></div>
+
+        <!-- Registration box -->
+        <div class="col-md-8 col-10  mb-lg-0">
+          <div class="card" style="background-color: white">
+            <div class="card-body py-5 px-md-5 shadow ">
+              <h2 class="mb-3 text-center">Get started with <br><span class="fw-bold">DomesticAID</span></h2>
+              <p class="text-center">Your first step to awesome</p>
+              <form action="../Registration&Profiling/profiling.html">
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+
+                <div class="text-danger" id="error_msg">
+
+                </div>
+                <!-- Email input -->
+                <div class="mb-3">
+                  <label for="input_email" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="input_email" aria-describedby="emailHelp">
+                </div>
+
+                <!-- <div class="form-outline mb-4">
+              <input type="email" id="form3Example3" class="form-control" />
+              <label class="form-label" for="form3Example3">Email address</label>
+            </div> -->
+
+                <!-- Password input -->
+                <!-- <div class="form-outline mb-4">
+              <input type="password" id="form3Example4" class="form-control" />
+              <label class="form-label" for="form3Example4">Password</label>
+            </div> -->
+
+                <div class="mb-3">
+                  <label for="input_password" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="input_password">
+                </div>
+
+                <!-- <div class="form-outline mb-4">
+              <input type="password" id="form3Example4" class="form-control" />
+              <label class="form-label" for="form3Example4">Confirm Password</label>
+            </div> -->
+
+                <div class="mb-3">
+                  <label for="cfm_password" class="form-label">Confirm password</label>
+                  <input type="password" class="form-control" id="cfm_password">
+                </div>
+
+                <!-- Checkbox -->
+                <!-- <div class="form-check d-flex  mb-4">
+            
+              </label>
+            </div> -->
+
+                <div class="mb-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="sendAlertsetCheck">
+                    <label class="form-check-label" for="sendAlertsetCheck">
+                      Send me email updates!
+                    </label>
+                    <div class="text-secondary"><small>We promise to only send important alerts, no spam.</small></div>
+                  </div>
+                </div>
+
+                <!-- Submit button -->
+                <!-- <button type="submit" class="btn btn-dark btn-rounded mb-4 mt-8"> 
+              CREATE ACCOUNT 
+            </button> -->
+
+                <div class="mt-5 text-center">
+                    <button class="btn btn-rounded btn-outline-secondary p-3 " style="border-radius:60px" type="button"
+                    onclick="registrationValidation()"
+                    >Create an account</button>
+                </div>
+
+                <!-- <a href="/HomeLandingAbout/homepage.html" class="btn btn-rounded btn-outline-secondary p-3" tabindex="-1" role="button" aria-disabled="true">Create account</a> -->
+
+                <div class="m-auto text-center mt-3">
+                  Already have an account? <a href="/Registration&Profiling/login.html">Log in</a>
+                </div>
+
+
+                <!-- Register buttons -->
+
+              </form>
+
+
+            </div>
+          </div>
+        </div>
+        <div class="col"></div>
+      </div>
+      <div class="m-auto text-center mt-4 pb-5">
+        By signing up, you agree to DomesticAID's <a href="#">Terms of Use</a> and <a href="#">Privacy Policy</a>
+      </div>
+
+    </div>
+    <!-- <section class="s" style="margin-top: 60px;"> -->
+    <!-- Jumbotron -->
+    <!-- <div class="px-4 py-5 px-md-5 text-center text-lg-start" ">
+      <div class="container">
+        <div class="row gx-lg-5 align-items-center">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <h1 class="my-5 display-3 fw-bold ls-tight" style="color: #FFC0CB">
+              Almost there! <br />
+              <span class="text" id="demo" style="color: #D3D3D3; text-align: center;"> </span>
+            </h1>
+            <lottie-player
+            src="https://assets2.lottiefiles.com/packages/lf20_pprxh53t.json"
+            background="transparent"
+            speed="1"
+            style="width: 100%; height: 250px"
+            hover
+            loop
+            autoplay
+          ></lottie-player>
+          </div> -->
+
+    <!-- <div class="col-lg-6 mb-5 mb-lg-0">
+            <div class="card" style="background-color: white">
+              <div class="card-body py-5 px-md-5 mt-5 shadow ">
+                <form action="../Registration&Profiling/profiling.html"> -->
+    <!-- 2 column grid layout with text inputs for the first and last names -->
+    <!-- <div class="row"> -->
+
+
+    <!-- </div> -->
+
+    <!-- Email input -->
+    <!-- <div class="form-outline mb-4">
+                    <input type="email" id="form3Example3" class="form-control" />
+                    <label class="form-label" for="form3Example3">Email address</label>
+                  </div> -->
+
+    <!-- Password input -->
+    <!-- <div class="form-outline mb-4">
+                    <input type="password" id="form3Example4" class="form-control" />
+                    <label class="form-label" for="form3Example4">Password</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="password" id="form3Example4" class="form-control" />
+                    <label class="form-label" for="form3Example4">Confirm Password</label>
+                  </div>
+   -->
+
+    <!-- Checkbox -->
+    <!-- <div class="form-check d-flex  mb-4">
+                  
+                    </label>
+                  </div> -->
+
+    <!-- Submit button -->
+    <!-- <button type="submit" class="btn btn-dark btn-block mb-4 mt-8"> 
+                    CREATE ACCOUNT 
+                  </button> -->
+
+    <!-- Register buttons -->
+
+    <!-- </form> -->
+    <!-- </div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+  
+  <!-- Jumbotron -->
+
+  <!-- Section: Design Block -->
+
+  <script src="../scripts/registration_validation.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
+
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+
+  <!-- Icon -->
+  <link rel="icon" href="../img/logo.png" type="image/gif" sizes="50x50">
+
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+  <link rel="stylesheet" href="../stylesheets/homepage.css">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet" />
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <!-- Vue.js 3 CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+
+  <!-- lottie -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+  crossorigin="anonymous"></script>
+
+  <script src="../../scripts/activities.js"></script> 
+
+</head>
+
+<body id="root">
+
+  <!-- SOS and translate button -->
+  <button type="button" v-on:click="translate_dialog()" id="translate_btn"
+    class="btn btn-floating btn-outline-secondary bg-white">
+    <i v-show="!show_translate_option" class="fas fa-language fa-xl"></i>
+    <i v-show="show_translate_option" class="fas fa-window-close fa-xl"></i>
+  </button>
+
+  <div class="card" id="translate_option" v-show="show_translate_option">
+    <div class="card-body">
+      <h5 class="card-title">Select preferred language</h5>
+
+      <div>
+        <button type="button" id="en" onClick="window.location.reload();" class="btn w-100" style="background-color:rgb(255, 255, 234)">
+          <i class="flag-singapore flag float-start"></i>
+          English
+        </button>
+      </div>
+
+      <div>
+        <button type="button" id="indo" class="btn w-100" v-on:click="translate()">
+          <i class="flag-indonesia flag float-start"></i>
+          Bahasa Indonesia
+        </button>
+      </div>
+
+      <div>
+        <button type="button" class="btn w-100">
+          <i class="flag-myanmar flag float-start"></i>
+          Burmese
+        </button>
+      </div>
+
+      <div>
+        <button type="button" class="btn w-100">
+          <i class="flag-philippines flag float-start"></i>
+          Tagalog
+        </button>
+      </div>
+
+    </div>
+
+
+  </div>
+
+<!--   
+  <button type="button" id="sos_btn" v-on:click="sos_dialog()" class="btn btn-floating sos_btn btn-danger fw-bolder"
+    data-bs-toggle="modal" data-bs-target="#sosModal">
+    <h5 v-show="!show_sos_dialog" class="m-auto">SOS</h5>
+    <i v-show="show_sos_dialog" class="fas fa-window-close fa-xl"></i>
+  </button> -->
+
+  <sos-template></sos-template>
+
+  <!-- [END] SOS and translate button -->
+ 
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+
+      <a class="navbar-brand" href="/HomeLandingAbout/homepage.html">
+          <img src="/img/logo.png" style="height: 140px;" alt="DomesticAID Logo" />
+      </a>
+
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+          aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+              <li class="nav-item dropdown mx-3">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                      data-mdb-toggle="dropdown" aria-expanded="false">
+                      <i class="fas fa-user-friends"></i>
+                      {{social_plus}}
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                      <li>
+                          <a class="dropdown-item" href="/Social/Forum/forum.html">{{forum_title}}</a>
+                      </li>
+
+                      <li>
+                          <a class="dropdown-item"
+                              href="/Social/Activities/activities_landing.html">{{activity_title}}</a>
+                      </li>
+
+                  </ul>
+              </li>
+
+              <!-- Icon dropdown -->
+
+              <li class="nav-item dropdown mx-3">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                      data-mdb-toggle="dropdown" aria-expanded="false">
+                      <i class="fas fa-folder-open"></i>
+                      {{guides}}
+                  </a>
+
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                      <li>
+                          <a class="dropdown-item" href="/Guides/guide_care.html">{{navbar_caregiving}}</a>
+                      </li>
+
+                      <li>
+                          <a class="dropdown-item" href="/Guides/guide_navigation.html">{{navbar_navigating}}</a>
+                      </li>
+
+                      <li>
+                          <a class="dropdown-item" href="/Guides/guide_rights.html">{{navbar_rights}}</a>
+                      </li>
+
+                  </ul>
+
+
+              </li>
+
+              <li class="nav-item dropdown mx-3">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                      data-mdb-toggle="dropdown" aria-expanded="false">
+                      <i class="fas fa-seedling"></i>
+                      {{wellness}}
+                  </a>
+
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                      <li>
+                          <a class="dropdown-item" href="/HealthIsWealth/Mental_Health/mental_health_landing.html">{{navbar_mental_health}}</a>
+                      </li>
+
+                      <li>
+                          <a class="dropdown-item" href="/HealthIsWealth/Physical_Health/physical_health_places.html">{{navbar_physical_health}}</a>
+                      </li>
+
+                  </ul>
+
+
+              </li>
+
+              <!-- Icon dropdown -->
+
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
+                      id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                      <img src="/img/jx.jpg" class="rounded-circle" style="height:45px" alt="Portrait of a Woman"
+                          loading="lazy" />
+                  </a>
+
+                  <ul class="dropdown-menu dropdown-menu-md-end dropdown-menu-start " aria-labelledby="navbarDropdownMenu">
+                      <li>
+                          <a class="dropdown-item" href="/Registration&Profiling/edit_profiling.html">My
+                              profile</a>
+                      </li>
+                      <li>
+                          <a class="dropdown-item" href="/HomeLandingAbout/about.html">Logout</a>
+                      </li>
+                  </ul>
+              </li>
+
+              <!-- Icon dropdown -->
+
+          </ul>
+      </div>
+  </div>
+</nav>
+
+<!-- Header Banner -->
+<div class="container-fluid mx-auto mb-5 text-center">
+    <div class="row bg-light">
+      <!-- style="background-color: rgb(246, 235, 247);" -->
+      <div class="col-2 col-lg-1"></div>
+      <div class="col-xl-4 col-lg-3 col-12" style="margin-top: 15%; text-align: center;">
+        <h1 id="header-text">{{hello}} <span id="user_name">{{name}}</span>!</h1>
+        <h1 id="header-subtext">{{welcome_msg}}</h1>
+      </div>
+
+      <div class="col-lg-2 col-0"></div>
+      <div class="col-xl-4 col-lg-5 col-12 my-5 text-center">
+        <div class="row">
+          <div class="col m-2 rounded-5" style="background-color: pink;">
+            <lottie-player
+            src="https://assets8.lottiefiles.com/packages/lf20_l9xeroxk.json"
+            background="transparent"
+            speed="1"
+            style="height: 100%;"
+            loop
+            autoplay
+            ></lottie-player>
+          </div>
+          <div class="col m-2 rounded-5" style="background-color: rgb(127, 240, 229);">
+            <lottie-player
+            src="https://assets8.lottiefiles.com/packages/lf20_iwwltgly.json"
+            background="transparent"
+            speed="1"
+            style="height: 100%;"
+            loop
+            autoplay
+            ></lottie-player>
+          </div>
+          <div class="col m-2 rounded-5" style="background-color:lightgoldenrodyellow;">
+            <lottie-player
+            src="https://assets1.lottiefiles.com/packages/lf20_q81jggtb.json"
+            background="transparent"
+            speed="1"
+            style="height: 100%;"
+            loop
+            autoplay
+            ></lottie-player>
+          </div>
+        </div>
+  
+        <div class="row">
+          <div class="col m-2 rounded-5" style="background-color: lightgreen;">
+            <lottie-player
+            src="https://assets2.lottiefiles.com/packages/lf20_fjv8qxqn.json"
+            background="transparent"
+            speed="1"
+            style="height: 100%;"
+            loop
+            autoplay
+            ></lottie-player>
+          </div>
+          <div class="col m-2 rounded-5" style="background-color:lightcoral;">
+            <lottie-player
+            src="https://assets3.lottiefiles.com/private_files/lf30_czsywxpt.json"
+            background="transparent"
+            speed="1"
+            style="height: 100%;"
+            loop
+            autoplay
+            ></lottie-player>
+          </div>
+          <div class="col m-2 rounded-5" style="background-color: rgb(191, 248, 248);">
+            <lottie-player
+            src="https://assets2.lottiefiles.com/packages/lf20_je019gjz.json"
+            background="transparent"
+            speed="1"
+            style="height: 100%;"
+            loop
+            autoplay
+            ></lottie-player>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col m-2 rounded-5" style="background-color: lightsalmon;">
+            <lottie-player
+            src="https://assets1.lottiefiles.com/packages/lf20_9ycwmgb9.json"
+            background="transparent"
+            speed="1"
+            style="height: 100%;"
+            loop
+            autoplay
+            ></lottie-player>
+          </div>
+          <div class="col m-2 rounded-5" style="background-color:lightseagreen;">
+            <lottie-player
+            src="https://assets7.lottiefiles.com/private_files/lf30_m46YDW.json"
+            background="transparent"
+            speed="1"
+            style="height: 100%;"
+            loop
+            autoplay
+            ></lottie-player>
+          </div>
+          <div class="col m-2 rounded-5" style="background-color: lightcyan;">
+            <lottie-player
+            src="https://assets7.lottiefiles.com/packages/lf20_hebegwpc.json"
+            background="transparent"
+            speed="1"
+            style="height: 100%;"
+            loop
+            autoplay
+            ></lottie-player>
+          </div>
+        </div>    
+      </div>   
+
+  </div>
+</div>
+
+<!-- Upcoming Activities  -->
+<div class="container">
+  <h1>{{selectedActivities}}</h1>
+  <h1 style=" text-shadow: 2px 2px 5px lightgrey; color:black;">{{upcoming_activities}}</h1>
+  <br><br>
+  <!-- CAROUSEL FOR XL SCREEN -->
+  <div id="carouselExampleIndicators" class="d-none d-xl-block carousel slide" data-bs-ride="carousel">
+
+    <div class="carousel-inner py-3">
+
+      <div class="carousel-item active">
+        <div class="row d-flex justify-content-center">
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Dinner</h5>
+              <h7> 12/11/2022</h7>
+              <p class="card-text">Lunch with friends</p>
+            </div>
+          </div>
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Cooking class</h5>
+              <h7> 13/11/2022 </h7>
+              <p class="card-text">Cooking class @ SMU</p>
+            </div>
+          </div>
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Picnic</h5>
+              <h7> 16/11/2022 </h7>
+              <p class="card-text"> Picnic at fort canning park</p>
+            </div>
+          </div> 
+
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="row d-flex justify-content-center">
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Shopping</h5>
+              <h7> 25/11/2022 </h7>
+              <p class="card-text"> Shopping at orchard road</p>
+              <button type="button" class="btn btn-outline-info">DETAILS</button>
+            </div>
+          </div>
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Event</h5>
+              <h7> 28/11/2022 </h7>
+              <p class="card-text">Event @ MBS</p>
+                <button type="button" class="btn btn-outline-info">DETAILS</button>
+           
+            </div>
+          </div>
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Date</h5>
+              <h7> 31/11/2022 </h7>
+              <p class="card-text">Date @ Singapore River</p>
+                <button type="button" class="btn btn-outline-info">DETAILS</button>
+           
+            </div>
+          </div>
+
+          
+
+        </div>
+      </div>
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="prev" style="color: black;">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+      data-bs-slide="next" style="color: black;">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+  </div>
+
+  <!-- CAROUSEL FOR LG SCREEN -->
+  <div id="carouselExampleIndicators1" class="d-xl-none d-lg-block d-md-none d-sm-none carousel slide"
+    data-bs-ride="carousel">
+
+    <div class="carousel-inner py-3">
+
+      <div class="carousel-item active">
+        <div class="row d-flex justify-content-center">
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Dinner</h5>
+              <h7> 12/11/2022</h7>
+              <p class="card-text">Lunch with friends</p>
+            </div>
+          </div>
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Event</h5>
+              <h7> 28/11/2022 </h7>
+              <p class="card-text">Event @ MBS</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="row d-flex justify-content-center">
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Picnic</h5>
+              <h7> 16/11/2022 </h7>
+              <p class="card-text"> Picnic at fort canning park</p>
+            </div>
+          </div> 
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Shopping</h5>
+              <h7> 25/11/2022 </h7>
+              <p class="card-text"> Shopping at orchard road</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="row d-flex justify-content-center">
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Event</h5>
+              <h7> 28/11/2022 </h7>
+              <p class="card-text">Event @ MBS</p>
+            </div>
+          </div>
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Date</h5>
+              <h7> 31/11/2022 </h7>
+              <p class="card-text">Date @ Singapore River</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators1"
+      data-bs-slide="prev" style="color: black;">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators1"
+      data-bs-slide="next" style="color: black;">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+  </div>
+
+  <!-- CAROUSEL FOR MD SCREEN -->
+  <div id="carouselExampleIndicators2" class="d-xl-none d-lg-none d-md-block d-sm-none carousel slide"
+    data-bs-ride="carousel">
+
+    <div class="carousel-inner py-3">
+
+      <div class="carousel-item active">
+        <div class="row d-flex justify-content-center">
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Dinner</h5>
+              <h7> 12/11/2022</h7>
+              <p class="card-text">Lunch with friends</p>
+            </div>
+          </div>
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Event</h5>
+              <h7> 28/11/2022 </h7>
+              <p class="card-text">Event @ MBS</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="row d-flex justify-content-center">
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Picnic</h5>
+              <h7> 16/11/2022 </h7>
+              <p class="card-text"> Picnic at fort canning park</p>
+            </div>
+          </div> 
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Shopping</h5>
+              <h7> 25/11/2022 </h7>
+              <p class="card-text"> Shopping at orchard road</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="row d-flex justify-content-center">
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Event</h5>
+              <h7> 28/11/2022 </h7>
+              <p class="card-text">Event @ MBS</p>
+            </div>
+          </div>
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Date</h5>
+              <h7> 31/11/2022 </h7>
+              <p class="card-text">Date @ Singapore River</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators2"
+      data-bs-slide="prev" style="color: black;">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators2"
+      data-bs-slide="next" style="color: black;">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+  </div>
+
+  <!-- CAROUSEL FOR SM SCREEN -->
+  <div id="carouselExampleIndicators3" class="d-xl-none d-lg-none d-md-none d-sm-block carousel slide"
+    data-bs-ride="carousel">
+
+    <div class="carousel-inner py-3">
+
+      <div class="carousel-item active">
+        <div class="row d-flex justify-content-center">
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Dinner</h5>
+              <h7> 12/11/2022</h7>
+              <p class="card-text">Lunch with friends</p>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="row d-flex justify-content-center">
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Event</h5>
+              <h7> 28/11/2022 </h7>
+              <p class="card-text">Event @ MBS</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="row d-flex justify-content-center">
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Picnic</h5>
+              <h7> 16/11/2022 </h7>
+              <p class="card-text"> Picnic at fort canning park</p>
+            </div>
+          </div> 
+
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="row d-flex justify-content-center">
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Shopping</h5>
+              <h7> 25/11/2022 </h7>
+              <p class="card-text"> Shopping at orchard road</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="row d-flex justify-content-center">
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Event</h5>
+              <h7> 28/11/2022 </h7>
+              <p class="card-text">Event @ MBS</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="row d-flex justify-content-center">
+
+          <div class="card mx-3" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Date</h5>
+              <h7> 31/11/2022 </h7>
+              <p class="card-text">Date @ Singapore River</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators3"
+      data-bs-slide="prev" style="color: black;">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators3"
+      data-bs-slide="next" style="color: black;">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+
+  </div>
+</div>
+
+  <div class="container">
+    <!-- Social +  -->
+    <h1 class="sub-header" id="sub-header1" style=" text-shadow: 2px 2px 5px lightgrey;">
+      <button class="button"><a href="../Social/social_plus.html"><span>Social+</span></a></button>
+    </h1>
+    <div class="row">
+
+      <div class="col-lg-6 my-2">
+        <div class="card h-100 p-5 social-card" id="social-card-1">
+          <div class="row">
+            <div class="col-7 order-2">
+              <div class="card-body">
+                <h3 class="card-title fw-bold">{{forum_title}}</h3>
+                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                <p class="card-text">{{forum_desc}}</p>
+                <a href="../Social/Forum/forum.html" class="btn" id="social_button">{{forum_btn}}</a>
+              </div>
+            </div>
+            <div class="col-5 order-1">
+              <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_x4402ny7.json" background="transparent"
+                speed="1" style="width: auto" loop autoplay></lottie-player>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 my-2">
+        <div class="card h-100 p-5 social-card" id="social-card-2">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-7 order-2">
+                <h3 class="card-title fw-bold">{{activity_title}}</h3>
+                <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                <p class="card-text">{{activity_desc}}</p>
+                <a href="../Social/Activities/activities_landing.html" class="btn" id="social_button">{{activity_btn}}</a>
+              </div>
+              <div class="col-5 order-1">
+                <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_GcNGbf.json" background="transparent"
+                  speed="1" style="width: 90%;" loop autoplay></lottie-player>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Guides -->
+
+    <h1 class="sub-header" id="sub-header2" style=" text-shadow: 2px 2px 5px lightgrey;">
+      <button class="button"><a href="../Guides/guides_categories.html"><span>{{guides}}</span></a></button>
+    </h1>
+
+    <div class="row">
+
+      <div class="col-lg-4 my-2">
+        <div class="card h-100 p-5 guide-card" id="guide-card-1">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">{{guides_navigate_title}}</h5>
+            <br>
+            <p class="card-text">{{guides_navigate_desc}}</p>
+            <a href="../Guides/guide_care.html" class="btn" id="guide_button">{{guides_navigate_btn}}</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 my-2">
+        <div class="card h-100 p-5 guide-card" id="guide-card-2">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">{{guides_rights_title}}</h5>
+            <br>
+            <p class="card-text">{{guides_rights_desc}}</p>
+            <a href="../Guides/guide_rights.html" class="btn" id="guide_button">{{guides_rights_btn}}</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 my-2">
+        <div class="card h-100 p-5 guide-card" id="guide-card-3">
+          <div class="card-body">
+            <h5 class="card-title fw-bold">{{guides_resources_title}}</h5>
+            <br>
+            <p class="card-text">{{guides_resources_desc}}</p>
+            <a href="../Guides/guide_navigation.html" class="btn" id="guide_button">{{guides_resources_btn}}</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Mental Health Cards -->
+
+    <h1 class="sub-header" id="sub-header3" style=" text-shadow: 2px 2px 5px lightgrey;">
+      <button class="button"><a href="../HealthIsWealth/health_is_wealth.html"><span>{{wellness}}</span></a></button>
+    </h1>
+
+    <div id="carouselExampleInterval" class="carousel slide my-2" data-bs-ride="carousel">
+      <div class="carousel-inner rounded-5">
+
+        <div class="carousel-item active" data-bs-interval="5000">
+          <!-- <img src="..." class="d-block w-100" alt="..."> -->
+          <div class="row justify-content-center">
+            <div class="card h-100 p-5 mental-card" id="mental-card-1">
+              <div class="card-body">
+
+                <div class="row">
+
+                  <div class="col-8">
+                    <h3 class="card-title fw-bold">{{breather_title}}</h3>
+                    <p class="card-text">{{breather_desc}}</p>
+                    <a href="../HealthIsWealth/Mental_Health/breathing.html" class="btn"
+                      id="mental_button">{{breather_btn}}</a>
+                  </div>
+
+                  <div class="col-4">
+                    <lottie-player src="https://assets7.lottiefiles.com/packages/lf20_fCKkXdwO3V.json"
+                      background="transparent" speed="1" style="height: 40vh;" loop autoplay></lottie-player>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item" data-bs-interval="5000">
+          <!-- <img src="..." class="d-block w-100" alt="..."> -->
+          <div class="row justify-content-center">
+            <div class="card h-100 p-5 mental-card" id="mental-card-3">
+              <div class="card-body">
+
+                <div class="row">
+
+                  <div class="col-8">
+                    <h3 class="card-title fw-bold">{{bingo}}</h3>
+                    <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                    <p class="card-text">{{bingo_desc}}</p>
+                    <a href="../HealthIsWealth/Mental_Health/mental_guides.html" class="btn"
+                      id="mental_button">{{bingo_btn}}</a>
+                  </div>
+
+                  <div class="col-4">
+                    <lottie-player src="https://assets4.lottiefiles.com/packages/lf20_8Gr1sc.json"
+                      background="transparent" speed="1" style="height: 40vh;" loop autoplay></lottie-player>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item" data-bs-interval="5000">
+          <!-- <img src="..." class="d-block w-100" alt="..."> -->
+          <div class="row justify-content-center">
+            <div class="card h-100 p-5 mental-card" id="mental-card-3">
+              <div class="card-body">
+
+                <div class="row">
+                  <div class="col-8">
+                    <h3 class="card-title fw-bold">{{journal_title}}</h3>
+                    <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                    <p class="card-text">{{journal_desc}}</p>
+                    <a href="../HealthIsWealth/Mental_Health/journalling.html" class="btn"
+                      id="mental_button">{{journal_btn}}</a>
+                  </div>
+                  <div class="col-4">
+                    <lottie-player src="https://assets1.lottiefiles.com/packages/lf20_bcmjcj8d.json"
+                      background="transparent" speed="1" style="height: 40vh;" loop autoplay></lottie-player>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-item" data-bs-interval="5000">
+          <!-- <img src="..." class="d-block w-100" alt="..."> -->
+          <div class="row justify-content-center">
+            <div class="card h-100 p-5 mental-card" id="mental-card-4">
+              <div class="card-body">
+
+                <div class="row">
+                  <div class="col-8">
+                    <h3 class="card-title fw-bold">{{health_title}}</h3>
+                    <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                    <p class="card-text">{{health_desc}}</p>
+                    <a href="../HealthIsWealth/Physical_Health/physical_health_places.html" class="btn"
+                      id="mental_button">{{health_btn}}</a>
+                  </div>
+                  <div class="col-4">
+                    <lottie-player src="https://assets8.lottiefiles.com/packages/lf20_5njp3vgg.json"
+                      background="transparent" speed="1" style="height: 40vh;" loop autoplay></lottie-player>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+</div>
+
+<div id="footer">
+  <footer-template></footer-template>
+</div>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+      crossorigin="anonymous"></script>
+    <script src="../scripts/nav_foot.js"></script>
+    <script src="/scripts/homepage.js"></script>
+    <script src="../scripts/sos.js"></script>
+
+    <script type="text/javascript">
+     
+      </script>
+    
+</body>
+
+</html>

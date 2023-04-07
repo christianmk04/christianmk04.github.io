@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mental Healthcare Help</title>
+
+  <!-- Icon -->
+  <link rel="icon" href="../../img/logo.png" type="image/gif" sizes="50x50">
+
+  <link rel="stylesheet" href="../../stylesheets/guides.css">
+  <script src="../../scripts/maps.js"></script>
+  <script src="../../scripts/modal.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+  <!-- Font Awesome -->
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" /> -->
+  <!-- Google Fonts -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" /> -->
+  <!-- MDB -->
+  <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet" /> -->
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet" />
+
+  <!-- MDB -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+
+  <!-- Vue JS -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+
+  <!-- Do NOT Remove -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <!-- Vue.js 3 CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <!-- LINK VUEJS -->
+  <!-- Dont touch -->
+  <script type="module" src="../../scripts/mental_health_places.js"></script>
+  <!-- Dont touch -->
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+
+
+  <style>
+    /* Set the size of the div element that contains the map */
+    #map {
+      height: 400px;
+      /* The height is 400 pixels */
+      width: 100%;
+      /* The width is the width of the web page */
+    }
+
+    /* Optional: Makes the sample page fill the window. */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    #questionnaire_btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      /* padding: 20px; */
+      height: 70px;
+      width: 70px;
+      z-index: 1;
+    }
+
+    #quizPop {
+      bottom: 120px;
+      right: 30px;
+      position: fixed;
+      z-index: 2;
+    }
+  </style>
+
+
+
+</head>
+
+<body onload="triggerBtnClick()" id="root">
+
+  <!--  [START] Questionnaire -->
+  <button type="button" v-on:click="check_quiz()" id="questionnaire_btn" class="btn btn-floating btn-black">
+    <i v-show="!show_popup" class="fas fa-search fa-lg"></i>
+    <!-- <i v-show="!show_translate_option" class="fas fa-language fa-xl"></i> -->
+    <i v-show="show_popup" class="fas fa-window-close fa-xl"></i>
+  </button>
+
+  <div class="card" id="quizPop" v-show="show_popup" style="background-color: #f1e6fe; width: 40%;">
+    <div class="card-body shadow" id="display_page">
+
+      <div id="firstPage">
+        <h4 class="card-title text-center fw-bold"><b>Unsure of what help you need?</b></h4>
+        <p>We'll generate the best suggestion to fit your needs.</p>
+
+        <!-- First page -->
+        <div class="float-end">
+          <button type="button" class="btn btn-outline-success btn-lg text-center" @click="start_quiz()">Start</button>
+        </div>
+      </div>
+
+      <!-- Second page -->
+      <div id="second_page" hidden>
+
+        <!-- {{select_option}} -->
+
+        <h4 class="card-title text-center fw-bold"><b>Select the option that best describes yourself now.</b></h4>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="psych" id="psych" value="psych" v-model="select_option">
+          <label class="form-check-label" for="psych">
+            I suspect I have depression, anxiety (or other mental disorders)
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="socialW" id="socialW" value="socialW"
+            v-model="select_option">
+          <label class="form-check-label" for="socialW">
+            I need help with financial, social and/or legal matters
+          </label>
+        </div>
+
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="counsel" id="counsel" value="counsel"
+            v-model="select_option">
+          <label class="form-check-label" for="counsel">
+            I haven't been feeling like myself these days. I'm not sure what is going on with me...
+          </label>
+        </div>
+
+        <div class="float-end">
+          <button :disabled="select_option == ''" type="button" class="btn btn-outline-success btn-lg text-center"
+            @click="generate_result()">Next</button>
+        </div>
+      </div>
+
+      <!-- Results -->
+
+      <div id="third_page" hidden>
+        <h3>We recommend you to seek help from a <span class="text-danger"
+            style="text-decoration:underline">{{this.recommend}}</span></h3>
+        <br>
+        <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_iombyzfq.json" background="transparent"
+          speed="1" class="m-auto" loop autoplay style="height:80px;">
+        </lottie-player>
+        <div class="float-end">
+          Do again!
+          <button type="button" v-on:click="restart()" class="btn btn-floating btn-outline-dark">
+            <i class="fa fa-refresh"></i>
+            <!-- <i v-show="!show_translate_option" class="fas fa-language fa-xl"></i> -->
+          </button>
+
+        </div>
+
+
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <!-- [END] Questionnaire -->
+
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+
+      <a class="navbar-brand" href="/HomeLandingAbout/homepage.html">
+        <img src="/img/logo.png" style="height: 140px;" alt="DomesticAID Logo" />
+      </a>
+
+      <button class="navbar-toggler" style="color:black;" type="button" data-bs-toggle="collapse"
+        data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+          <li class="nav-item dropdown mx-3">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-mdb-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user-friends"></i>
+              Social+
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+              <li>
+                <a class="dropdown-item" href="/Social/Forum/forum.html">Forum</a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="/Social/Activities/activities_landing.html">Activities</a>
+              </li>
+
+            </ul>
+          </li>
+
+          <!-- Icon dropdown -->
+
+          <li class="nav-item dropdown mx-3">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-mdb-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-folder-open"></i>
+              Guides
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+              <li>
+                <a class="dropdown-item" href="/Guides/guide_care.html">Caregiving</a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="/Guides/guide_navigation.html">Navigating
+                  Singapore</a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="/Guides/guide_rights.html">Know your rights!</a>
+              </li>
+
+            </ul>
+
+
+          </li>
+
+          <li class="nav-item dropdown mx-3">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-mdb-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-seedling"></i>
+              Wellness
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+              <li>
+                <a class="dropdown-item" href="/HealthIsWealth/Mental_Health/mental_health_landing.html">Mental
+                  Health</a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="/HealthIsWealth/Physical_Health/physical_health_places.html">Physical
+                  Health</a>
+              </li>
+
+            </ul>
+
+
+          </li>
+
+          <!-- Icon dropdown -->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink"
+              role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+              <img src="/img/jx.jpg" class="rounded-circle" height="22" alt="Portrait of a Woman" loading="lazy" />
+            </a>
+
+            <!-- End -->
+
+            <ul class="dropdown-menu dropdown-menu-md-end dropdown-menu-sm-start" aria-labelledby="navbarDropdownMenu">
+              <li>
+                <a class="dropdown-item" href="/Registration&Profiling/edit_profiling.html">My
+                  profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/HomeLandingAbout/about.html">Logout</a>
+              </li>
+            </ul>
+
+            <!-- Start -->
+            <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenu">
+              <li>
+                <a class="dropdown-item mx-3" href="/Registration&Profiling/edit_profiling.html">My
+                  profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item mx-3" href="/HomeLandingAbout/about.html">Logout</a>
+              </li>
+            </ul>
+          </li>
+
+
+
+          <!-- Icon dropdown -->
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+
+  <!-- Guide Starts Here -->
+  <div class="container-fluid pb-5"
+    style="background-image: linear-gradient(to right, #e8e7fd , #ebf3fa);">
+    <!-- <p>{{facilities}}</p>
+    <p>{{subCategories}}</p>
+    <p>{{selectedArray}}</p> -->
+
+
+    <div class="row pt-5">
+      <div class="col fw-bold my-auto text-center" style="font-size: 60px; color:#9a616d;">
+        You deserve to be happy.
+        <!-- <div><small>You deserve to be happy</small></div> -->
+      </div>
+      <div class="text-center" style="font-size:25px;"><small>What type of support are you looking for?</small></div>
+    </div>
+
+
+    <div class="row mt-4 g-4 row-cols-sm-1 row-cols-md-3 justify-content-center">
+      <div class="col-xl-4 col-sm-12">
+        <div class="facility-card">
+          <img src="../../img/psychiatrist.jpg" class="card-img-top" />
+          <div class="card-body text-center mt-3">
+            <h3 class="card-title">Psychiatrists</h3>
+            <p class="card-text">
+              Psychiatrists are professionals who specialize in diagnosing and treating mental health disorders.
+            </p>
+            <button class='btn' onclick="fillTitle(this.id)" v-on:click="fetchSelectedArray('psychiatric')"
+              type="button" id="psychiatrist" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
+              Find Locations
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-xl-4 col-sm-12">
+        <div class="facility-card">
+          <img src="../../img/counsellor.webp" class="card-img-top" />
+          <div class="card-body text-center mt-3">
+            <h3 class="card-title">Counsellors</h3>
+            <p class="card-text">
+              Counsellors are professionals who will work you through your personal and emotional issues.
+            </p>
+            <button class='btn' onclick="fillTitle(this.id)" v-on:click="fetchSelectedArray('counselling')"
+              type="button" id="counsellors" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
+              Find Locations
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="row mt-4 g-4 row-cols-sm-1 row-cols-md-3 justify-content-center">
+
+      <div class="col-xl-4 col-sm-12">
+        <div class="facility-card">
+          <img style="height: 280px" src="../../img/socialworker.jpg" class="card-img-top" />
+          <div class="card-body text-center  mt-3">
+            <h3 class="card-title">Social Workers</h3>
+            <p class="card-text">Social workers are trained personnel who can assist you in your general struggles.</p>
+            <!-- <button class='btn' onclick="fillTitle(this.id)" v-on:click="fetchSelectedArray('social')" type="button"
+              id="social work" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
+               -->
+
+            <button class='btn' onclick="fillTitle(this.id)" v-on:click="fetchSelectedArray('social')" type="button"
+              id="social_work" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
+              Find Locations
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-sm-12">
+        <div class="facility-card">
+          <img style="height: 280px" src="../../img/imh.webp" class="card-img-top" />
+          <div class="card-body text-center mt-3">
+            <h3 class="card-title">Mental Health Institutions </h3>
+            <p class="card-text">
+              Mental Health Institutions are dedicated to the treatment of severe mental disorders.
+            </p>
+
+            <button class='btn' onclick="fillTitle(this.id)" v-on:click="fetchSelectedArray('imh')" type="button"
+              id="mental hospitals" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
+              Find Locations
+
+              <!-- <button class='btn' onclick="fillTitle(this.id)" v-on:click="fetchSelectedArray('imh')" type="button"
+                id="mental_hospitals" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
+                Read More
+              </button> -->
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header"
+          style="background-color: #9a616d; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+          <h1 id="modalHeader" class="modal-title mx-auto" style="color: white"></h1>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+
+          <table class="table">
+            <thead class="text-center">
+              <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Postal</th>
+                <th>Contact</th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody id="tableBody">
+
+
+            </tbody>
+
+          </table>
+
+
+
+          <div id="directions">
+            <h3>Directions</h3>
+
+            <!--The div element for the map -->
+            <div id="map"></div>
+            <script>
+              // Initialize and add the map
+              function initMap() {
+                // default: The location of user
+                var lat = parseFloat(document.getElementById("lat").value);
+                var lng = parseFloat(document.getElementById("lng").value);
+                var loc = { lat: lat, lng: lng };
+
+                var map = new google.maps.Map(
+                  // play with the zoom value to zoom in or out
+                  document.getElementById('map'), { zoom: 14, center: loc });
+
+                var marker = new google.maps.Marker({ position: loc, map: map });
+              }
+            </script>
+
+            <!--Load the API from the specified URL
+            * The async attribute allows the browser to render the page while the API loads
+            * The key parameter will contain your own API key 
+            * The callback parameter executes the initMap() function
+            -->
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEBeYTGw-Q-PuSz5yF5q2bL5O70yOjOWA
+            &callback=initMap" async defer></script>
+
+            <div class="jumbotron">
+              <form>
+                <div class="form-group mt-5">
+                  <!-- fetch user's postal and set in value -->
+                  <input type="text" class="form-control" name="addr" id="addr" placeholder="Enter Postal Code Here..."
+                    value="11 Jalan Rindu">
+
+                  <br>
+
+                  <button id="getAddress" type="button" class="btn text-white" onclick="getLoc('addr')"
+                    style='background-color:#9a616d;'>Get Full Address</button>
+                  <!-- <button id="getPostal" type="button" onclick="getLoc('postcode')" class="btn btn-primary">Get Postal Code</button> -->
+
+
+                  <!-- the following set the lat, lng values to put a marker on the map-->
+                  <input type="hidden" id="lat" name="lat" />
+                  <input type="hidden" id="lng" name="lng" />
+
+                </div>
+                <p id="display" class="lead text-center mt-4"></p>
+              </form>
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+  <div id="footer">
+    <footer-template></footer-template>
+  </div>
+  <script src="../../scripts/nav_foot.js"></script>
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+
+
+  <!-- LINK AXIOS -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+
+</body>
+
+</html>

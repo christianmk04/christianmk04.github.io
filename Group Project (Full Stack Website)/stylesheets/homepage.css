@@ -1,0 +1,211 @@
+*{
+    font-family: Poppins;
+}
+.sub-header{
+    font-weight: 200px; 
+    margin: 20px 0px;
+}
+
+#sub-header1, #sub-header3{
+    text-align: end;
+}
+
+#sos_button{
+    margin-left: auto;
+    /* display: flex; */
+    border: 3px rgb(254, 112, 138) solid;
+    color: white;
+    background-color: rgb(254, 112, 138);
+    border-radius: 20px;
+}
+
+/* .nav-link{
+    color: gray;
+} */
+
+#logo{
+    width: 30%;
+}
+
+#container_div{
+margin: 0;
+}
+
+#header-text{
+    font-size: 60px;
+    font-weight: normal;
+}
+
+#guide-card-1, #mental-card-2{
+    background-image: linear-gradient(to right, #e1f4f7 , #f6ebf7);
+}
+
+#guide-card-2, #mental-card-1{
+    background-image: linear-gradient(to right, #fff6f0 , #faf8e3);
+}
+
+#guide-card-3, #mental-card-3{
+    background-image: linear-gradient(to right, #e1f7df , #ebf9fa);
+}
+
+#mental-card-4{
+    background-image: linear-gradient(to right, #e7f6fd , #f2faeb);
+}
+
+#social-card-1{
+    background-image: linear-gradient(to right, #fcf9e6 , #e6fce9);
+}
+
+#social-card-2{
+    background-image: linear-gradient(to right, #f9f1f6 , #e1f4f7);
+}
+
+.guide-card{
+    position: relative;
+}
+
+.guide-card .btn{
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    font-size: 13px;
+    border-radius: 20px;
+    border: 2px solid black;
+    color: black;
+    display: block;
+    background: transparent;
+    transition: .2s ease-in-out 0s;
+}
+
+.guide-card .btn:hover{
+    cursor: pointer;
+    transform: scale(1.25);
+    background: black;
+    color: white;
+}
+
+.mental-card{
+    position: relative;
+}
+
+.mental-card .btn{
+    position: absolute;
+    bottom: 10%;
+    left: 43%;
+    font-size: 13px;
+    border-radius: 20px;
+    /* padding: 15px; */
+    border: 2px solid black;
+    color: black;
+    display: block;
+    margin: 50px auto;
+    background: transparent;
+    transition: .2s ease-in-out 0s;
+}
+
+.mental-card .btn:hover{
+    cursor: pointer;
+    transform: scale(1.25);
+    background: black;
+    color: white;
+}
+
+.social-card{
+    position: relative;
+}
+
+.social-card .btn{
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+    font-size: 13px;
+    border-radius: 20px;
+    border: 2px solid black;
+    color: black;
+    display: block;
+    background: transparent;
+    transition: .2s ease-in-out 0s;
+}
+
+
+.social-card .btn:hover{
+    cursor: pointer;
+    transform: scale(1.25);
+    background: black;
+    color: white;
+}
+
+
+.button {
+    border-radius: 4px;
+    background-color: white;
+    border: none;
+    text-align: center;
+    font-size: 40px;
+    padding: 20px;
+    width: 20%;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
+  }
+  
+  .button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+    color: black;
+  }
+  
+  .button span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+  
+  .button:hover span {
+    padding-right: 25px;
+  }
+  
+  .button:hover span:after {
+    opacity: 1;                      
+    right: 0;
+  }
+
+
+  #translate_btn {
+    position: fixed;
+    bottom: 110px;
+    right: 30px;
+    /* padding: 20px; */
+    height: 70px;
+    width: 70px;
+    z-index: 1;
+  }
+
+  #sos_btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    /* padding: 20px; */
+    height: 70px;
+    width: 70px;
+    z-index: 1;
+  }
+
+  #translate_option {
+    bottom: 200px;
+    right: 30px;
+    position: fixed;
+    z-index: 2;
+  }
+
+  #sos_dialog {
+    bottom: 200px;
+    right: 30px;
+    position: fixed;
+    z-index: 2;
+  }

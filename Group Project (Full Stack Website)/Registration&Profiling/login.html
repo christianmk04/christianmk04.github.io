@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <!-- Icon -->
+    <link rel="icon" href="../img/logo.png" type="image/gif" sizes="50x50">
+
+    <link
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+rel="stylesheet"
+/>
+<!-- Google Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css"
+    rel="stylesheet"
+    />
+
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+
+    <style>
+      *{font-family: Poppins;
+      }
+    </style>
+
+
+</head>
+
+
+<body onload="typeWriter(); resetfields()" style="background-image: linear-gradient(to right, #e7f6fd , #f5ebfa);">
+<!-- Section: Design Block -->
+<section style="margin-top: 0px; ">
+    <!-- Jumbotron -->
+    <div class="px-4 py-5 px-md-5 text-center text-lg-start" ">
+      <div class="container">
+        <div class="row gx-lg-5 align-items-center">
+          <div class="col-lg-6 mb-5 mb-lg-0">
+            <h1 class="my-5 display-3 fw-bold ls-tight" style="color: #fe92a4">
+              DomesticAID <br />
+              <span class="text" id="demo" style="color: #b2b0b0; text-align: center; font-size: smaller;"></span>
+            </h1>
+            <lottie-player
+            src="https://assets1.lottiefiles.com/private_files/lf30_KTzaOr.json"
+            background="transparent"
+            speed="1"
+            style="width: 100%; height: 250px"
+            loop
+            autoplay
+          ></lottie-player>
+          </div>
+  
+          <div class="col-lg-6 my-5">
+              <div class="card" style="background-color: white">
+                <div class="card-body py-5 px-md-5 shadow ">
+               
+                  <div class="row">
+                    
+                    
+                  </div>
+                  <span> Log in to your account </span>
+                  <br>
+                  <br>
+
+                  <div class="text-danger" id="error_msg">
+
+                  </div>
+            
+                  <!-- Email input -->
+                  <div class="form-outline mb-4">
+                    <input type="email" id="form3Example3" name="email" class="form-control" />
+                    <label class="form-label" for="form3Example3">Email address</label>
+                  </div>
+  
+                  <!-- Password input -->
+                  <div class="form-outline mb-4">
+                    <input type="password" id="form3Example4" name="password"  class="form-control" />
+                    <label class="form-label" for="form3Example4">Password</label>
+                  </div>
+  
+                  <!-- Checkbox -->
+                  <div class="form-check d-flex justify-content-between">
+                    <div>
+                      <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked/>
+                      <label class="form-check-label" for="form2Example33">
+                        Remember me
+                      </label>
+                    </div>
+                    <div>
+                      <a href="">Forgot password</a>
+                    </div>
+                  </div>
+         
+                    
+
+                  <div class="mb-4">
+                    <br>
+                  
+                      No account? Register <a href="../Registration&Profiling/register.html">here</a>
+                   
+                  </div>
+  
+                  <!-- Submit button -->
+                  <button type="submit" class="btn btn-dark btn-block mb-4" onclick="validateLogin()"> 
+                    Log In
+                  </button>
+  
+                  <!-- Register buttons -->
+                  <div class="text-center">
+                    <p>or sign up with:</p>
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="fab fa-facebook-f"></i>
+                    </button>
+  
+                    <button type="button" class="btn btn-link btn-floating mx-1">
+                      <i class="fab fa-google"></i>
+                    </button>
+  
+            
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Jumbotron -->
+  </section>
+  <!-- Section: Design Block -->
+
+
+
+
+
+
+    <script
+type="text/javascript"
+src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"
+></script>
+
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<script>
+  var i = 0;
+  var txt = 'Here for you.';
+  var speed = 150;
+  
+  function typeWriter() {
+    console.log("test");
+    if (i < txt.length) {
+      document.getElementById("demo").innerHTML += txt.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+  </script>
+
+  <script src="../scripts/login_validate.js"></script>
+</body>
+</html>

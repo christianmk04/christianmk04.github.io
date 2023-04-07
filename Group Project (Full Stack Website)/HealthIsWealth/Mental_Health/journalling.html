@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal</title>
+
+    <!-- Icon -->
+    <link rel="icon" href="../../img/logo.png" type="image/gif" sizes="50x50">
+
+    <link rel="stylesheet" href="../../stylesheets/mental_health.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet" />
+
+
+    <!-- Vue.js 3 CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+
+</head>
+<body onload="getDate()" id="root" >
+
+ 
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+
+    <a class="navbar-brand" href="/HomeLandingAbout/homepage.html">
+      <img src="/img/logo.png" style="height: 140px;" alt="DomesticAID Logo" />
+    </a>
+
+    <button class="navbar-toggler" style="color:black;" type="button" data-bs-toggle="collapse"
+      data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mainNav">
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+        <li class="nav-item dropdown mx-3">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+            data-mdb-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user-friends"></i>
+            Social+
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            <li>
+              <a class="dropdown-item" href="/Social/Forum/forum.html">Forum</a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="/Social/Activities/activities_landing.html">Activities</a>
+            </li>
+
+          </ul>
+        </li>
+
+        <!-- Icon dropdown -->
+
+        <li class="nav-item dropdown mx-3">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+            data-mdb-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-folder-open"></i>
+            Guides
+          </a>
+
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            <li>
+              <a class="dropdown-item" href="/Guides/guide_care.html">Caregiving</a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="/Guides/guide_navigation.html">Navigating
+                Singapore</a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="/Guides/guide_rights.html">Know your rights!</a>
+            </li>
+
+          </ul>
+
+
+        </li>
+
+        <li class="nav-item dropdown mx-3">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+            data-mdb-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-seedling"></i>
+            Wellness
+          </a>
+
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            <li>
+              <a class="dropdown-item" href="/HealthIsWealth/Mental_Health/mental_health_landing.html">Mental
+                Health</a>
+            </li>
+
+            <li>
+              <a class="dropdown-item" href="/HealthIsWealth/Physical_Health/physical_health_places.html">Physical
+                Health</a>
+            </li>
+
+          </ul>
+
+
+        </li>
+
+        <!-- Icon dropdown -->
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink"
+            role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+            <img src="/img/jx.jpg" class="rounded-circle" height="22" alt="Portrait of a Woman" loading="lazy" />
+          </a>
+
+          <!-- End -->
+
+          <ul class="dropdown-menu dropdown-menu-md-end dropdown-menu-sm-start" aria-labelledby="navbarDropdownMenu">
+            <li>
+              <a class="dropdown-item" href="/Registration&Profiling/edit_profiling.html">My
+                profile</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/HomeLandingAbout/about.html">Logout</a>
+            </li>
+          </ul>
+
+          <!-- Start -->
+          <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenu">
+            <li>
+              <a class="dropdown-item" href="/Registration&Profiling/edit_profiling.html">My
+                profile</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="/HomeLandingAbout/about.html">Logout</a>
+            </li>
+          </ul>
+        </li>
+
+
+
+        <!-- Icon dropdown -->
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="container">
+
+  <h1 class="display-2 my-3">Journal down your thoughts...</h1>
+  <!-- {{entries}} -->
+  <form action="">
+    <div class="row mt-5">
+    
+
+      <label for="exampleFormControlTextarea1" class="form-label" id="curr_date"></label>
+    
+        <textarea name="entry" class="form-control" id="exampleFormControlTextarea1" rows="10" placeholder="Write about your day or what you're feeling..."></textarea>
+    
+    </div>
+
+    <div class="row my-3">
+
+      <div class="col-4">
+        Journal Mood:
+        <select name="category" id="cat" width="30%">
+          <option value="Happy">Happy</option>
+          <option value="Grateful">Grateful</option>
+          <option value="Sad">Sad</option>
+          <option value="Frustrated">Frustrated</option>
+          <option value="Helpless">Helpless</option>
+        </select>
+      </div>
+
+      <div class="col-8">
+        <button type='submit' class="btn btn-lg btn-info my-3 float-end">Note it!</button>
+      </div>
+    
+    </div>
+
+  </form>
+</div>
+
+
+
+<div class="container mt-5">
+
+  <hr>
+
+  <h1 class="display-4 my-3">Previous Entries</h1>
+  <div class="text-end">
+    
+    Filter By Category:
+    <select name="prev_journal_category" id="selectedCat" v-model="selectedCat">
+      <option value="">None</option>
+      <option value="happy">Happy</option>
+      <option value="grateful">Grateful</option>
+      <option value="sad">Sad</option>
+      <option value="frustrated">Frustrated</option>
+      <option value="helpless">Helpless</option>
+    </select>
+
+
+    Filter By Month:
+    <select name="prev_journal_category" id="selectedMonth" v-model="selectedMonth">
+      <option value="">None</option>
+      <option value="January">January</option>
+      <option value="February">February</option>
+      <option value="March">March</option>
+      <option value="April">April</option>
+      <option value="May">May</option>
+      <option value="June">June</option>
+      <option value="July">July</option>
+      <option value="August">August</option>
+      <option value="September">September</option>
+      <option value="October">October</option>
+      <option value="November">November</option>
+      <option value="December">December</option>
+    </select>
+
+    <button v-on:click="populateFilteredEntries()" class="btn btn-primary mx-2">Filter</button>
+    <button v-on:click="showAll()" class="btn btn-primary" id="showallbtn">Show All</button>
+  </div>
+  
+</div>
+
+<div class="container mt-5" id="prev_entry_table">
+  <table class="table table-striped table-info ">
+    <thead>
+      <tr>
+        
+        <th scope="col">Date</th>
+        <th scope="col">Category</th>
+        <th scope="col">Entry</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="entry of filteredEntries">
+        <td>{{entry.date}}</td>
+        <td>{{entry.category}}</td>
+        <td>{{entry.entry}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
+
+
+
+<div id="footer">
+  <footer-template></footer-template>
+</div>
+<script src="../scripts/nav_foot.js"></script>  
+
+<!-- <script src="mental_health_breathing.js"></script> -->
+
+<script src="../../scripts/journalling.js"></script>
+<script src="../../scripts/sos.js"></script>
+<script src="../../scripts/homepage.js"></script>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+</body>
+</html> 

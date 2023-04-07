@@ -1,0 +1,70 @@
+*{
+    font-family: Poppins
+}
+
+span{
+    color: gray;
+}
+
+#sos_button{
+    margin-left: auto;
+    /* display: flex; */
+    border: 3px rgb(254, 112, 138) solid;
+    color: white;
+    background-color: rgb(254, 112, 138);
+    border-radius: 20px;
+}
+
+#logo{
+    width: 30%;
+}
+
+#container_div{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.header-text{
+    font-size: 80px;
+    font-weight: 20;
+}
+
+#guide_button{
+    color: white;
+    background-color: black;
+    text-align: center;
+    border-radius: 20px;
+    /* font-family: cursive; */
+}
+
+#guidecard1{
+    background-image: linear-gradient(to right, #e1f4f7 , #f6ebf7);
+}
+
+#guidecard2{
+    background-image: linear-gradient(to right, #fff6f0 , #faf8e3);
+}
+
+#guidecard3{
+    background-image: linear-gradient(to right, #e1f7df , #ecebfa);
+}
+
+#guidecard4{
+    background-image: linear-gradient(to right, #fcf9e6 , #f1e6fc);
+}
+
+
+#guidecard{
+    position: relative;
+}
+
+#guide_button{
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+}
+
+.active-pink-2 input.form-control[type=text]:focus:not([readonly]) {
+    border-bottom: 1px solid #f48fb1;
+    box-shadow: 0 1px 0 0 #f48fb1;
+  }

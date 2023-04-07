@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Physical Healthcare</title>
+
+  <!-- Icon -->
+  <link rel="icon" href="../../img/logo.png" type="image/gif" sizes="50x50">
+
+  <link rel="stylesheet" href="../../stylesheets/guides.css">
+  <script src="../../scripts/maps.js"></script>
+  <script src="../../scripts/modal.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+    crossorigin="anonymous"></script>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+
+  <!-- MDB -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.0.0/mdb.min.css" rel="stylesheet" />
+
+
+  <!-- Do NOT Remove -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  <!-- Vue.js 3 CDN -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <!-- LINK VUEJS -->
+  <script type="module" src="../../scripts/physical_health_places.js"></script>
+
+
+  <style>
+    /* Set the size of the div element that contains the map */
+    #map {
+      height: 400px;
+      /* The height is 400 pixels */
+      width: 100%;
+      /* The width is the width of the web page */
+    }
+
+    /* Optional: Makes the sample page fill the window. */
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    #questionnaire_btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      /* padding: 20px; */
+      height: 70px;
+      width: 70px;
+      z-index: 1;
+    }
+
+    #quizPop {
+      bottom: 30px;
+      right: 100px;
+      position: fixed;
+      z-index: 2;
+    }
+  </style>
+
+
+
+</head>
+
+<body onload="triggerBtnClick()" id="root">
+
+  <!-- [START] Questionnaire -->
+
+  <button type="button" v-on:click="check_quiz()" id="questionnaire_btn" class="btn btn-floating btn-black">
+    <i v-show="!show_popup" class="fas fa-search fa-lg"></i>
+    <i v-show="show_popup" class="fas fa-window-close fa-xl"></i>
+  </button>
+
+  <div class="card" id="quizPop" v-show="show_popup" style="background-color: #e6f1fe; width:60%;">
+    <div class="card-body shadow" id="display_page">
+
+      <div id="firstPage" class="text-center">
+        <h4 class="card-title text-center fw-bold"><b>Unsure of which facility to go to?</b></h4>
+        <p>We'll generate the best suggestion for you!</p>
+
+        <!-- First page -->
+        <div class="m-auto">
+          <button type="button" class="btn btn-outline-primary btn-lg" @click="start_quiz()">Start</button>
+        </div>
+      </div>
+      <!-- Second page -->
+      <div id="second_page" hidden>
+
+        <!-- {{select_option}} -->
+
+        <h4 class="card-title text-center fw-bold"><b>Select the option that best describes yourself.</b></h4>
+        <div class="form-check">
+          <input class="form-check-input mt-2" type="radio" name="poly" id="poly" value="poly" v-model="select_option">
+          <label class="form-check-label" for="poly">
+            I have general medical symptoms and I would like a cheap alternative!
+          </label>
+        </div>
+        <hr>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="hosp" id="hosp" value="hosp"
+            v-model="select_option">
+          <label class="form-check-label" for="hosp">
+            I need to see a specialist or have an emergency medical condition!
+          </label>
+        </div>
+
+        <hr>
+
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="gp" id="gp" value="gp"
+            v-model="select_option">
+          <label class="form-check-label" for="gp">
+            I have general medical symptoms and I want a premium service.
+          </label>
+        </div>
+
+        <hr>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="dental" id="dental" value="dental"
+            v-model="select_option">
+          <label class="form-check-label" for="dental">
+            I need help with my oral health!
+          </label>
+        </div>
+
+        <hr>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="derm" id="derm" value="derm"
+            v-model="select_option">
+          <label class="form-check-label" for="derm">
+            I have a medical condition with my nails, skin or hair!
+          </label>
+        </div>
+
+        <hr>
+
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="pharm" id="pharm" value="pharm"
+            v-model="select_option">
+          <label class="form-check-label" for="pharm">
+            I just need to some over the counter meds!
+          </label>
+        </div>
+
+
+
+
+        <div class="float-end">
+          <button :disabled="select_option == ''" type="button" class="btn btn-outline-primary btn-lg text-center"
+            @click="generate_result()">Next</button>
+        </div>
+      </div>
+
+      <!-- Results -->
+
+      <div id="third_page" hidden>
+        <h3>Based on your answer, we recommend you to visit the <span class="text-danger"
+            style="text-decoration:underline">{{this.recommend}}</span></h3>
+        <br>
+        <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_gmspxrnd.json" background="transparent"
+          speed="1" class="m-auto" loop autoplay style="height:250px;">
+        </lottie-player>
+        <div class="float-end">
+          Do again!
+          <button type="button" v-on:click="restart()" class="btn btn-floating btn-outline-dark">
+            <i class="fa fa-refresh"></i>
+            <!-- <i v-show="!show_translate_option" class="fas fa-language fa-xl"></i> -->
+          </button>
+
+        </div>
+
+
+      </div>
+
+
+
+    </div>
+  </div>
+
+  <!-- [END] Questionnaire -->
+
+
+
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+
+      <a class="navbar-brand" href="/HomeLandingAbout/homepage.html">
+        <img src="/img/logo.png" style="height: 140px;" alt="DomesticAID Logo" />
+      </a>
+
+      <button class="navbar-toggler" style="color:black;" type="button" data-bs-toggle="collapse"
+        data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="mainNav">
+
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+          <li class="nav-item dropdown mx-3">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-mdb-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user-friends"></i>
+              Social+
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+              <li>
+                <a class="dropdown-item" href="/Social/Forum/forum.html">Forum</a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="/Social/Activities/activities_landing.html">Activities</a>
+              </li>
+
+            </ul>
+          </li>
+
+          <!-- Icon dropdown -->
+
+          <li class="nav-item dropdown mx-3">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-mdb-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-folder-open"></i>
+              Guides
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+              <li>
+                <a class="dropdown-item" href="/Guides/guide_care.html">Caregiving</a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="/Guides/guide_navigation.html">Navigating
+                  Singapore</a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="/Guides/guide_rights.html">Know your rights!</a>
+              </li>
+
+            </ul>
+
+
+          </li>
+
+          <li class="nav-item dropdown mx-3">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+              data-mdb-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-seedling"></i>
+              Wellness
+            </a>
+
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+              <li>
+                <a class="dropdown-item" href="/HealthIsWealth/Mental_Health/mental_health_landing.html">Mental
+                  Health</a>
+              </li>
+
+              <li>
+                <a class="dropdown-item" href="/HealthIsWealth/Physical_Health/physical_health_places.html">Physical
+                  Health</a>
+              </li>
+
+            </ul>
+
+
+          </li>
+
+          <!-- Icon dropdown -->
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink"
+              role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+              <img src="/img/jx.jpg" class="rounded-circle" height="22" alt="Portrait of a Woman" loading="lazy" />
+            </a>
+
+            <!-- End -->
+
+            <ul class="dropdown-menu dropdown-menu-md-end dropdown-menu-sm-start" aria-labelledby="navbarDropdownMenu">
+              <li>
+                <a class="dropdown-item" href="/Registration&Profiling/edit_profiling.html">My
+                  profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/HomeLandingAbout/about.html">Logout</a>
+              </li>
+            </ul>
+
+            <!-- Start -->
+            <ul class="dropdown-menu dropdown-menu" aria-labelledby="navbarDropdownMenu">
+              <li>
+                <a class="dropdown-item" href="/Registration&Profiling/edit_profiling.html">My
+                  profile</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/HomeLandingAbout/about.html">Logout</a>
+              </li>
+            </ul>
+          </li>
+
+
+
+          <!-- Icon dropdown -->
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+  <!-- Guide Starts Here -->
+  <div class="container-fluid p-5" style="background-image: linear-gradient(to right, #e8e7fd , #ebf3fa);">
+    <!-- <p>{{facilities}}</p>
+    <p>{{subCategories}}</p>
+    <p>{{selectedArray}}</p> -->
+
+
+    <div class="row ">
+      <div class="col fw-bold my-auto text-center" style="font-size: 60px; color:#9a616d;">
+        Physical Healthcare Facilities
+      </div>
+    </div>
+
+
+    <div class="row mt-4 g-2">
+      <div class="col-xl-4 col-sm-12">
+        <div class="facility-card card mx-3 h-100">
+          <img src="../../img/clinic.jpg" class="card-img-top" style="height: 30vh;" alt="Fissure in Sandstone" />
+          <div class="card-body">
+            <h2 class="card-title">Polyclinics</h2>
+            <p class="card-text my-5">Polyclinics are healthcare centres that provide primary care such as medical
+              treatment, preventive healthcare and other treatments. Usually around the neighbourhood, polyclinics are
+              highly accessible to anyone</p>
+            <button class='btn' onclick="fillTitle(this.id)" v-on:click="fetchSelectedArray('polyclinics')"
+              type="button" id="polyclinics" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
+              Find Locations
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-xl-4 col-sm-12">
+        <div class="facility-card card mx-3 h-100">
+          <img src="../../img/hospital.png" class="card-img-top" style="height: 30vh;" alt="Fissure in Sandstone" />
+          <div class="card-body">
+            <h2 class="card-title">Hospitals</h2>
+            <p class="card-text my-5">Hospitals provides affordable specialist care for patients, where you can go to
+              when you are facing any medical conditions that cannot be treated normally at general clinics. Hospitals
+              handle emergency situations also. </p>
+            <button class='btn' onclick="fillTitle(this.id)" v-on:click="fetchSelectedArray('hospitals')" type="button"
+              id="hospitals" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
+              Find Locations
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-sm-12">
+        <div class="facility-card card mx-3 h-100">
+          <img style="height: 30vh;" src="../../img/general_practitioner.jpg" class="card-img-top"
+            alt="Fissure in Sandstone" />
+          <div class="card-body">
+            <h2 class="card-title">GP Clinics</h2>
+            <p class="card-text my-5">GP Clinics or General practitioners are doctors who provide nonsurgical medical
+              care. General practitioners evaluate patients through exams and tests and diagnose conditions such as
+              diseases or injuries.</p>
+            <button class='btn' onclick="fillTitle(this.id)" v-on:click="fetchSelectedArray('gp')" type="button"
+              id="general_practitioners" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
+              Find Locations
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+    <div class="row my-4 g-2">
+
+      <div class="col-xl-4 col-sm-12">
+        <div class="facility-card card mx-3 h-100">
+          <img src="../../img/dentalhealthcare.jpg" class="card-img-top" style="height: 30vh;"
+            alt="Fissure in Sandstone" />
+          <div class="card-body">
+            <h2 class="card-title">Dental</h2>
+            <p class="card-text my-5">A Dentist is responsible for performing oral surgery and routine cleanings on
+              patients. They repair and remove teeth, diagnose conditions and tell patients about how to best care for
+              their teeth and gums. </p>
+            <button class='btn' onclick="fillTitle(this.id)" v-on:click="fetchSelectedArray('dental')" type="button"
+              id="dentists" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
+              Find Locations
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-sm-12">
+        <div class="facility-card card mx-3 h-100">
+          <img src="../../img/derma.jpg" class="card-img-top" style="height: 30vh;" alt="Fissure in Sandstone" />
+          <div class="card-body">
+            <h2 class="card-title">Dermatologists</h2>
+            <p class="card-text my-5">A dermatologist specializes in conditions that affect the skin, hair, and nails.
+              Whether it's rashes or wrinkles, no one understands your skin, hair, and nails better than a
+              board-certified dermatologist. </p>
+            <button class='btn' onclick="fillTitle(this.id)" v-on:click="fetchSelectedArray('derma')" type="button"
+              id="dermatologists" class="btn btn-dark" data-toggle="modal" data-target="#myModal">
+              Find Locations
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xl-4 col-sm-12">
+        <div class="facility-card card mx-3 h-100">
+          <img src="../../img/pharmacy.jpg" class="card-img-top" style="height: 30vh;" alt="Fissure in Sandstone" />
+          <div class="card-body">
+            <h2 class="card-title">Pharmacies</h2>
+            <p class="card-text my-5">Places like Watsons, Unity or Guardian. If you know what medicine to get for your
+              symptoms or illnesses such as paracetemol or strepsils, visit these places to get it over the counter
+              hassle free and affordably.</p>
+            <button class='btn' onclick="fillTitle(this.id)" v-on:click="fetchSelectedArray('pharmacy')" id="pharmacies"
+              class="btn btn-dark" data-toggle="modal" data-target="#myModal">
+              Find Locations
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header"
+          style="background-color: #9a616d; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+          <h1 id="modalHeader" class="modal-title mx-auto" style="color: white"></h1>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+
+          <table class="table">
+            <thead class="text-center">
+              <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Postal</th>
+                <th>Contact</th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody id="tableBody">
+
+
+            </tbody>
+
+          </table>
+
+
+
+          <div id="directions">
+            <h3>Directions</h3>
+
+            <!--The div element for the map -->
+            <div id="map"></div>
+            <script>
+              // Initialize and add the map
+              function initMap() {
+                // default: The location of user
+                var lat = parseFloat(document.getElementById("lat").value);
+                var lng = parseFloat(document.getElementById("lng").value);
+                var loc = { lat: lat, lng: lng };
+
+                var map = new google.maps.Map(
+                  // play with the zoom value to zoom in or out
+                  document.getElementById('map'), { zoom: 14, center: loc });
+
+                var marker = new google.maps.Marker({ position: loc, map: map });
+              }
+            </script>
+
+            <!--Load the API from the specified URL
+            * The async attribute allows the browser to render the page while the API loads
+            * The key parameter will contain your own API key 
+            * The callback parameter executes the initMap() function
+            -->
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAEBeYTGw-Q-PuSz5yF5q2bL5O70yOjOWA
+            &callback=initMap" async defer></script>
+
+            <div class="jumbotron">
+              <form>
+                <div class="form-group mt-5">
+                  <!-- fetch user's postal and set in value -->
+                  <input type="text" class="form-control" name="addr" id="addr" placeholder="Enter Postal Code Here..."
+                    value="11 Jalan Rindu">
+
+                  <br>
+
+                  <button id="getAddress" type="button" class="btn text-white" onclick="getLoc('addr')"
+                    style='background-color:#9a616d;'>Get Full Address</button>
+                  <!-- <button id="getPostal" type="button" onclick="getLoc('postcode')" class="btn btn-primary">Get Postal Code</button> -->
+
+
+                  <!-- the following set the lat, lng values to put a marker on the map-->
+                  <input type="hidden" id="lat" name="lat" />
+                  <input type="hidden" id="lng" name="lng" />
+
+                </div>
+                <p id="display" class="lead text-center mt-4"></p>
+              </form>
+            </div>
+          </div>
+
+          <!-- Modal footer -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+  <div id="footer">
+    <footer-template></footer-template>
+  </div>
+  <script src="../../scripts/nav_foot.js"></script>
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+    crossorigin="anonymous"></script>
+
+
+  <!-- LINK AXIOS -->
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+
+</body>
+
+</html>

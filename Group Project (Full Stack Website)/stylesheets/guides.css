@@ -1,0 +1,116 @@
+*{
+    font-family: Poppins;
+}
+
+span{
+    color: gray;
+}
+
+#sos_button{
+    margin-left: auto;
+    /* display: flex; */
+    border: 3px rgb(254, 112, 138) solid;
+    color: white;
+    background-color: rgb(254, 112, 138);
+    border-radius: 20px;
+}
+
+#logo{
+    width: 30%;
+}
+
+#container_div{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#header-text{
+    font-size: 50px;
+    font-weight: 20;
+}
+
+#guidecard1{
+    background-image: linear-gradient(to right, #e1f4f7 , #f6ebf7);
+}
+
+#guidecard2{
+    background-image: linear-gradient(to right, #fff6f0 , #faf8e3);
+}
+
+#guidecard3{
+    background-image: linear-gradient(to right, #e1f7df , #ecebfa);
+}
+
+#guidecard4{
+    background-image: linear-gradient(to right, #fcf9e6 , #f1e6fc);
+}
+
+
+#guidecard{
+    position: relative;
+}
+
+#guide_button{
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+}
+
+#guideCarousel{
+    background-image: linear-gradient(to right, #f4d9c1 , #e1f4f7);
+
+}
+
+.facility-card .btn{
+
+    font-size: 13px;
+    border-radius: 20px;
+    border: 2px solid black;
+    color: black;
+    display: block;
+    margin: auto;
+    background: transparent;
+    transition: .2s ease-in-out 0s;
+}
+
+
+#psychiatrist:hover, #counsellors:hover, #social_work:hover, #mental_hospitals:hover, #polyclinics:hover, #hospitals:hover, #general_practitioners:hover, #dentists:hover, #dermatologists:hover, #pharmacies:hover {
+    cursor: pointer;
+    transform: scale(1.25);
+    background: black;
+    color: white;
+}
+
+#guide_button{
+    font-size: 13px;
+    border-radius: 20px;
+    border: 2px solid black;
+    color: black;
+    display: block;
+    background: transparent;
+    transition: .2s ease-in-out 0s;
+}
+
+#guide_button:hover{
+    cursor: pointer;
+    transform: scale(1.25);
+    background: black;
+    color: white;
+}
+
+#guide_button2{
+    font-size: 13px;
+    border-radius: 20px;
+    border: 2px solid black;
+    color: black;
+    display: block;
+    background: transparent;
+    transition: .2s ease-in-out 0s;
+}
+
+#guide_button2:hover{
+    cursor: pointer;
+    transform: scale(1.25);
+    background: black;
+    color: white;
+}
